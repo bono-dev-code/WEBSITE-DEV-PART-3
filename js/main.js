@@ -216,6 +216,73 @@ class DateTimeUpdater {
     }
 }
 
+// ================= PRODUCT FILTERING =================
+class ProductFilter {
+    constructor() {
+        this.searchInput = document.getElementById('product-search');
+        this.filterButtons = document.querySelectorAll('.filter-button');
+        this.productItems = document.querySelectorAll('.product-item');
+        this.currentCategory = 'all';
+        this.searchTerm = '';
+
+        if (this.searchInput && this.filterButtons.length > 0 && this.productItems.length > 0) {
+            this.init();
+        }
+    }
+
+    init() {
+        // Add event listeners
+        this.filterButtons.forEach(button => {
+            button.addEventListener('click', () => this.filterByCategory(button));
+        });
+
+        this.searchInput.addEventListener('input', () => this.filterBySearch());
+
+        // Initial filter
+        this.applyFilters();
+    }
+
+    filterByCategory(button) {
+        // Update active button
+        this.filterButtons.forEach(btn => btn.classList.remove('active'));
+        button.classList.add('active');
+
+        // Update current category
+        this.currentCategory = button.dataset.category;
+
+        // Apply filters
+        this.applyFilters();
+    }
+
+    filterBySearch() {
+        this.searchTerm = this.searchInput.value.toLowerCase().trim();
+        this.applyFilters();
+    }
+
+    applyFilters() {
+        this.productItems.forEach(item => {
+            const category = item.dataset.category;
+            const name = item.querySelector('h3').textContent.toLowerCase();
+            const description = item.querySelector('p').textContent.toLowerCase();
+
+            // Check category filter
+            const categoryMatch = this.currentCategory === 'all' || category === this.currentCategory;
+
+            // Check search filter
+            const searchMatch = this.searchTerm === '' ||
+                name.includes(this.searchTerm) ||
+                description.includes(this.searchTerm);
+
+            // Show/hide item
+            if (categoryMatch && searchMatch) {
+                item.style.display = 'block';
+            } else {
+                item.style.display = 'none';
+            }
+        });
+    }
+}
+
 // ================= INITIALIZE EVERYTHING =================
 document.addEventListener('DOMContentLoaded', () => {
     // Initialize slideshow if on homepage
@@ -226,6 +293,11 @@ document.addEventListener('DOMContentLoaded', () => {
     // Initialize form handler if contact form exists
     if (document.getElementById('contactForm')) {
         new FormHandler('contactForm');
+    }
+
+    // Initialize product filter if on products page
+    if (document.querySelector('.product-categories')) {
+        new ProductFilter();
     }
 
     // Initialize mobile menu

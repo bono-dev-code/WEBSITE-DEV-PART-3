@@ -446,7 +446,45 @@ h2::after {
     margin: 0.5rem auto; /* Centers the underline with space above */
 }
 
-/* 
+/*
+   SEARCH CONTAINER
+   Styles for the product search input field.
+*/
+.search-container {
+    display: flex; /* Flexbox for alignment */
+    justify-content: center; /* Centers the search input */
+    margin-bottom: 2rem; /* Space below search */
+    position: relative; /* Positioning context for icon */
+}
+
+.search-container input {
+    width: 100%; /* Full width */
+    max-width: 400px; /* Maximum width */
+    padding: 0.75rem 2.5rem 0.75rem 1rem; /* Padding with space for icon */
+    border: 2px solid var(--border-color); /* Border */
+    border-radius: 50px; /* Rounded ends */
+    font-size: 1rem; /* Readable text size */
+    background: white; /* White background */
+    transition: border-color 0.3s ease; /* Smooth border transition */
+}
+
+.search-container input:focus {
+    outline: none; /* Remove default outline */
+    border-color: var(--primary-color); /* Red border on focus */
+    box-shadow: 0 0 0 3px rgba(139, 0, 0, 0.1); /* Subtle glow */
+}
+
+.search-icon {
+    position: absolute; /* Positions icon inside input */
+    right: 1rem; /* Distance from right edge */
+    top: 50%; /* Centers vertically */
+    transform: translateY(-50%); /* Precise centering */
+    color: var(--text-dark); /* Dark icon color */
+    font-size: 1.1rem; /* Icon size */
+    pointer-events: none; /* Doesn't interfere with input clicks */
+}
+
+/*
    CATEGORY FILTER BUTTONS
    Styles for the product category filter buttons.
 */
@@ -566,11 +604,6 @@ h2::after {
     aspect-ratio: 4/3; /* Consistent proportion for all images */
     object-fit: cover; /* Crops images to fill space */
     cursor: pointer; /* Indicates image is interactive */
-    transition: transform 0.3s ease; /* Smooth zoom transition */
-}
-
-.product-item:hover img {
-    transform: scale(1.05); /* Slight zoom on hover */
 }
 
 .product-item h3 {
