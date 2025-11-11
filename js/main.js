@@ -1,13 +1,28 @@
+/**
+ * Controls the slideshow functionality, including auto-advancing, navigation, and pause on hover.
+ */
 class SlideshowController {
+    /**
+     * Initializes the slideshow controller with DOM elements and starts functionality.
+     */
     constructor() {
+        // Select all radio inputs for slides
         this.slides = document.querySelectorAll('input[name="slides"]');
+        // Track current slide index
         this.currentSlide = 0;
+        // Total number of slides
         this.totalSlides = this.slides.length;
+        // Interval ID for auto-advance
         this.autoAdvanceInterval = null;
+        // Flag to pause auto-advance on hover
         this.isPaused = false;
+        // Initialize all features
         this.init();
     }
 
+    /**
+     * Initializes all slideshow features.
+     */
     init() {
         this.startAutoAdvance();
         this.addKeyboardNavigation();
@@ -15,6 +30,9 @@ class SlideshowController {
         this.addDotClickHandlers();
     }
 
+    /**
+     * Starts the auto-advance interval for slides.
+     */
     startAutoAdvance() {
         this.autoAdvanceInterval = setInterval(() => {
             if (!this.isPaused) {
@@ -23,16 +41,26 @@ class SlideshowController {
         }, 4000);
     }
 
+    /**
+     * Advances to the next slide.
+     */
     nextSlide() {
         this.currentSlide = (this.currentSlide + 1) % this.totalSlides;
         this.slides[this.currentSlide].checked = true;
     }
 
+    /**
+     * Goes to the previous slide.
+     */
     previousSlide() {
         this.currentSlide = (this.currentSlide - 1 + this.totalSlides) % this.totalSlides;
         this.slides[this.currentSlide].checked = true;
     }
 
+    /**
+     * Goes to a specific slide by index.
+     * @param {number} index - The index of the slide to go to.
+     */
     goToSlide(index) {
         if (index >= 0 && index < this.totalSlides) {
             this.currentSlide = index;
@@ -40,6 +68,9 @@ class SlideshowController {
         }
     }
 
+    /**
+     * Adds keyboard navigation for arrow keys.
+     */
     addKeyboardNavigation() {
         document.addEventListener('keydown', (e) => {
             if (e.key === 'ArrowLeft') {
@@ -50,6 +81,9 @@ class SlideshowController {
         });
     }
 
+    /**
+     * Adds hover pause functionality to the slideshow container.
+     */
     addHoverPause() {
         const slideshow = document.querySelector('.slideshow-container');
         if (slideshow) {
@@ -62,6 +96,9 @@ class SlideshowController {
         }
     }
 
+    /**
+     * Adds click handlers to dot navigation elements.
+     */
     addDotClickHandlers() {
         const dots = document.querySelectorAll('.dot');
         dots.forEach((dot, index) => {
@@ -70,14 +107,26 @@ class SlideshowController {
     }
 }
 
+/**
+ * Handles form validation, submission, and response display for contact and enquiry forms.
+ */
 class FormHandler {
+    /**
+     * Initializes the form handler for a specific form by ID.
+     * @param {string} formId - The ID of the form element to handle.
+     */
     constructor(formId) {
+        // Get the form element by ID
         this.form = document.getElementById(formId);
+        // Initialize if form exists
         if (this.form) {
             this.init();
         }
     }
 
+    /**
+     * Sets up form submission event listener with validation and submission.
+     */
     init() {
         this.form.addEventListener('submit', (e) => {
             e.preventDefault();
@@ -87,6 +136,10 @@ class FormHandler {
         });
     }
 
+    /**
+     * Validates all form fields based on requirements.
+     * @returns {boolean} True if form is valid, false otherwise.
+     */
     validateForm() {
         let isValid = true;
         const requiredFields = this.form.querySelectorAll('[required]');
@@ -107,6 +160,7 @@ class FormHandler {
             isValid = false;
         }
         if (emailField && emailField.value.trim()) {
+            // Basic email regex validation
             const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
             if (!emailRegex.test(emailField.value)) {
                 this.showError(emailField, 'Please enter a valid email address');
@@ -114,6 +168,7 @@ class FormHandler {
             }
         }
         if (phoneField && phoneField.value.trim()) {
+            // South African phone number regex: starts with +27 or 0, followed by 6-8, then 8 digits
             const phoneRegex = /^(\+27|0)[6-8][0-9]{8}$/;
             if (!phoneRegex.test(phoneField.value)) {
                 this.showError(phoneField, 'Please enter a valid South African phone number (e.g., +27123456789 or 0123456789)');
@@ -134,6 +189,11 @@ class FormHandler {
         return isValid;
     }
 
+    /**
+     * Displays an error message for a specific field.
+     * @param {HTMLElement} field - The form field element.
+     * @param {string} message - The error message to display.
+     */
     showError(field, message) {
         const errorDiv = document.createElement('div');
         errorDiv.className = 'error-message';
@@ -145,6 +205,9 @@ class FormHandler {
         field.style.borderColor = 'red';
     }
 
+    /**
+     * Clears all error messages and resets field borders.
+     */
     clearErrors() {
         const errors = this.form.querySelectorAll('.error-message');
         errors.forEach(error => error.remove());
@@ -152,6 +215,9 @@ class FormHandler {
         fields.forEach(field => field.style.borderColor = '');
     }
 
+    /**
+     * Submits the form based on its ID (enquiry or contact).
+     */
     submitForm() {
         const formId = this.form.id;
         if (formId === 'enquiryForm') {
@@ -161,6 +227,9 @@ class FormHandler {
         }
     }
 
+    /**
+     * Handles submission of the enquiry form with simulated processing and response.
+     */
     submitEnquiryForm() {
         const submitButton = this.form.querySelector('button[type="submit"]');
         const originalText = submitButton.textContent;
@@ -178,6 +247,7 @@ class FormHandler {
             } else if (enquiryType === 'sponsor') {
                 response = 'Thank you for considering sponsorship! We value partnerships that help us serve our community better. Our sponsorship coordinator will contact you within 2 business days to discuss opportunities.';
             } else {
+                // Price per kg for each product
                 const prices = {beef: 180, chicken: 120, lamb: 220, pork: 150, goat: 200, mixed: 170};
                 const pricePerKg = prices[product] || prices.mixed;
                 const estimatedCost = quantity * pricePerKg;
@@ -198,6 +268,9 @@ class FormHandler {
         }, 2000);
     }
 
+    /**
+     * Handles submission of the contact form by opening a mailto link.
+     */
     submitContactForm() {
         const submitButton = this.form.querySelector('button[type="submit"]');
         const originalText = submitButton.textContent;
@@ -221,6 +294,10 @@ class FormHandler {
         }, 1500);
     }
 
+    /**
+     * Displays a modal with the response message.
+     * @param {string} response - The response text to display.
+     */
     showResponseModal(response) {
         const modal = document.createElement('div');
         modal.style.cssText = `position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.7);display:flex;justify-content:center;align-items:center;z-index:1000;`;
@@ -247,7 +324,13 @@ class FormHandler {
     }
 }
 
+/**
+ * Manages the mobile navigation menu toggle.
+ */
 class MobileMenu {
+    /**
+     * Initializes the mobile menu with toggle and nav elements.
+     */
     constructor() {
         this.toggle = document.getElementById('nav-toggle');
         this.nav = document.querySelector('nav');
@@ -256,6 +339,9 @@ class MobileMenu {
         }
     }
 
+    /**
+     * Sets up the toggle event listener for the menu.
+     */
     init() {
         this.toggle.addEventListener('change', () => {
             if (this.toggle.checked) {
@@ -267,7 +353,13 @@ class MobileMenu {
     }
 }
 
+/**
+ * Updates date/time and year elements dynamically.
+ */
 class DateTimeUpdater {
+    /**
+     * Initializes the updater with elements to update.
+     */
     constructor() {
         this.dateTimeElements = document.querySelectorAll('.currentDateTime');
         this.yearElements = document.querySelectorAll('.currentYear');
@@ -278,6 +370,9 @@ class DateTimeUpdater {
         }
     }
 
+    /**
+     * Updates date/time elements with current date and time in South African format.
+     */
     updateDateTime() {
         const now = new Date();
         const options = {year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit', second: '2-digit', timeZoneName: 'short'};
@@ -285,13 +380,22 @@ class DateTimeUpdater {
         this.dateTimeElements.forEach(el => el.textContent = dateTimeString);
     }
 
+    /**
+     * Updates year elements with the current year.
+     */
     updateYear() {
         const currentYear = new Date().getFullYear();
         this.yearElements.forEach(el => el.textContent = currentYear);
     }
 }
 
+/**
+ * Handles product filtering by category and search term with animations.
+ */
 class ProductFilter {
+    /**
+     * Initializes the product filter with DOM elements.
+     */
     constructor() {
         this.searchInput = document.getElementById('product-search');
         this.filterButtons = document.querySelectorAll('.filter-button');
@@ -303,6 +407,9 @@ class ProductFilter {
         }
     }
 
+    /**
+     * Sets up event listeners and initial state.
+     */
     init() {
         this.filterButtons.forEach(button => {
             button.addEventListener('click', () => this.filterByCategory(button));
@@ -318,6 +425,10 @@ class ProductFilter {
         });
     }
 
+    /**
+     * Filters products by selected category.
+     * @param {HTMLElement} button - The clicked filter button.
+     */
     filterByCategory(button) {
         this.filterButtons.forEach(btn => btn.classList.remove('active'));
         button.classList.add('active');
@@ -325,11 +436,17 @@ class ProductFilter {
         this.applyFilters();
     }
 
+    /**
+     * Filters products by search input.
+     */
     filterBySearch() {
         this.searchTerm = this.searchInput.value.toLowerCase().trim();
         this.applyFilters();
     }
 
+    /**
+     * Checks URL hash for initial category filter.
+     */
     checkUrlHash() {
         const hash = window.location.hash.substring(1);
         const validCategories = ['beef', 'chicken', 'lamb', 'pork', 'goat'];
@@ -343,6 +460,9 @@ class ProductFilter {
         }
     }
 
+    /**
+     * Applies current filters to show/hide products with animations.
+     */
     applyFilters() {
         let visibleIndex = 0;
         this.productItems.forEach(item => {
@@ -378,7 +498,13 @@ class ProductFilter {
     }
 }
 
+/**
+ * Manages a lightbox gallery for image viewing with navigation and touch support.
+ */
 class LightboxGallery {
+    /**
+     * Initializes the lightbox gallery.
+     */
     constructor() {
         this.overlay = null;
         this.currentIndex = 0;
@@ -389,17 +515,26 @@ class LightboxGallery {
         this.init();
     }
 
+    /**
+     * Initializes the lightbox by creating HTML and binding events.
+     */
     init() {
         this.createLightboxHTML();
         this.bindEvents();
     }
 
+    /**
+     * Creates the lightbox HTML structure and appends it to the body.
+     */
     createLightboxHTML() {
         const lightboxHTML = `<div class="lightbox-overlay" id="lightbox-overlay"><div class="lightbox-container"><button class="lightbox-nav lightbox-prev" aria-label="Previous image"><i class="fas fa-chevron-left"></i></button><button class="lightbox-nav lightbox-next" aria-label="Next image"><i class="fas fa-chevron-right"></i></button><button class="lightbox-close" aria-label="Close lightbox"><i class="fas fa-times"></i></button><div class="lightbox-counter"></div><img class="lightbox-image" src="" alt=""><div class="lightbox-caption"></div><div class="lightbox-loading"></div></div></div>`;
         document.body.insertAdjacentHTML('beforeend', lightboxHTML);
         this.overlay = document.getElementById('lightbox-overlay');
     }
 
+    /**
+     * Binds all event listeners for the lightbox functionality.
+     */
     bindEvents() {
         document.addEventListener('click', (e) => {
             if (e.target.classList.contains('lightbox-trigger')) {
@@ -433,6 +568,10 @@ class LightboxGallery {
         }
     }
 
+    /**
+     * Opens the lightbox for a specific trigger element.
+     * @param {HTMLElement} triggerElement - The element that triggered the lightbox.
+     */
     openLightbox(triggerElement) {
         const gallery = triggerElement.dataset.gallery || 'default';
         this.currentGallery = gallery;
@@ -443,6 +582,10 @@ class LightboxGallery {
         document.body.style.overflow = 'hidden';
     }
 
+    /**
+     * Shows a specific image in the lightbox by index.
+     * @param {number} index - The index of the image to show.
+     */
     showImage(index) {
         if (index < 0 || index >= this.images.length) return;
         this.currentIndex = index;
@@ -466,16 +609,25 @@ class LightboxGallery {
         img.src = image.src;
     }
 
+    /**
+     * Shows the next image in the gallery.
+     */
     showNext() {
         const nextIndex = (this.currentIndex + 1) % this.images.length;
         this.showImage(nextIndex);
     }
 
+    /**
+     * Shows the previous image in the gallery.
+     */
     showPrevious() {
         const prevIndex = (this.currentIndex - 1 + this.images.length) % this.images.length;
         this.showImage(prevIndex);
     }
 
+    /**
+     * Handles swipe gestures for touch navigation.
+     */
     handleSwipe() {
         const swipeThreshold = 50;
         const swipeDistance = this.touchStartX - this.touchEndX;
@@ -488,30 +640,41 @@ class LightboxGallery {
         }
     }
 
+    /**
+     * Closes the lightbox and restores page scroll.
+     */
     closeLightbox() {
         this.overlay.classList.remove('active');
         document.body.style.overflow = '';
     }
 }
 
+// Initialize all components when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
+    // Initialize slideshow if container exists
     if (document.querySelector('.slideshow-container')) {
         new SlideshowController();
     }
+    // Initialize contact form handler if form exists
     if (document.getElementById('contactForm')) {
         new FormHandler('contactForm');
     }
+    // Initialize enquiry form handler if form exists
     if (document.getElementById('enquiryForm')) {
         new FormHandler('enquiryForm');
     }
+    // Initialize product filter if categories exist
     if (document.querySelector('.product-categories')) {
         new ProductFilter();
     }
+    // Initialize lightbox if triggers exist
     if (document.querySelector('.lightbox-trigger')) {
         new LightboxGallery();
     }
+    // Always initialize mobile menu and date/time updater
     new MobileMenu();
     new DateTimeUpdater();
+    // Add smooth scrolling to anchor links
     const anchorLinks = document.querySelectorAll('a[href^="#"]');
     anchorLinks.forEach(link => {
         link.addEventListener('click', (e) => {
