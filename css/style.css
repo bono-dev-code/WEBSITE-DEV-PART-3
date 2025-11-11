@@ -1,0 +1,1570 @@
+/* ========================================
+   MEATMASTERS BUTCHERY - CSS STYLES
+   ======================================== */
+
+/* 
+   RESET & BASE STYLES
+*/
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    box-sizing: border-box; 
+}
+
+/* 
+   CSS CUSTOM PROPERTIES (VARIABLES)
+*/
+:root {
+    --primary-color: #8B0000;      
+    --secondary-color: #A0522D;    
+    --accent-color: #DAA520;        
+    --text-dark: #2C1810;          
+    --text-light: #F5F5DC;         
+    --background-light: #FFF8DC;    
+    --background-dark: #2C1810;     
+    --border-color: #D2B48C;        
+    --shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+    --shadow-hover: 0 8px 15px rgba(0, 0, 0, 0.2); 
+}
+
+/* 
+   BODY STYLES
+   Sets the default font, line height, text color and background for the entire page.
+*/
+body {
+    font-family: 'Open Sans', sans-serif; 
+    line-height: 1.6; 
+    color: var(--text-dark); 
+    background-color: var(--background-light); 
+}
+
+/* 
+   HEADING STYLES
+*/
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Merriweather', serif; 
+    font-weight: 700; 
+    color: var(--primary-color); 
+}
+
+/* 
+   LINK STYLES
+*/
+a {
+    text-decoration: none; 
+    color: var(--primary-color); 
+    transition: color 0.3s ease; /* Smooth color change over 0.3 seconds */
+}
+
+a:hover {
+    color: var(--secondary-color); /* Changes link color to brown on hover */
+}
+
+/* 
+   HEADER STYLES
+*/
+header {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)); 
+    color: var(--text-light); 
+    padding: 1rem 0; 
+    box-shadow: var(--shadow); 
+    position: sticky; 
+    top: 0;
+    z-index: 1000; 
+}
+
+/* 
+   HEADER CONTAINER
+   Centers content within the header and uses flexbox to arrange logo and navigation.
+*/
+header .container {
+    max-width: 75rem; 
+    margin: 0 auto; 
+    padding: 0 2rem; 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    flex-wrap: wrap; /
+}
+
+/* 
+   LOGO STYLES
+   Arranges the logo image and text side by side with spacing.
+*/
+.logo {
+    display: flex; 
+    align-items: center; 
+    gap: 1rem; 
+}
+
+.logo img {
+    height: 3.75em; /* Sets a fixed height for the logo */
+    width: auto;  
+}
+
+.logo h1 {
+    font-size: 1.5rem; 
+    color: var(--text-light);
+    margin: 0; 
+}
+
+/* 
+   NAVIGATION MENU
+   Styles the unordered list to display horizontally as a navigation bar.
+*/
+nav ul {
+    display: flex; 
+    list-style: none; 
+    gap: 2rem; 
+    flex-wrap: wrap; 
+}
+
+/* 
+   NAVIGATION LINK STYLES
+   Styles the individual navigation links with padding, rounded corners, and hover effects.
+*/
+nav a {
+    color: var(--text-light); /* Light text color */
+    font-weight: 600; /* Makes nav text bold */
+    padding: 0.5rem 1rem; /* Adds clickable area around links */
+    border-radius: 1.5625em; /* Fully rounded ends creating pill shape */
+    transition: all 0.3s ease; /* Smooth transition for all properties */
+}
+
+nav a:hover,
+nav a.active {
+    background-color: rgba(255, 255, 255, 0.2); /* Semi-transparent white background on hover/active */
+    color: var(--accent-color); /* Changes text color to gold */
+}
+
+/* 
+   HERO SECTION
+   Contains the main slideshow banner at the top of the page.
+*/
+.hero {
+    position: relative; /* Positions child elements absolutely relative to this container */
+    padding: 0; /* Removes default padding */
+    margin-bottom: 3rem; /* Space below hero section */
+    overflow: hidden; /* Hides any content that overflows */
+}
+
+/* 
+   SLIDESHOW CONTAINER
+   Wrapper for the image slideshow with fixed height and positioning.
+*/
+.slideshow-container {
+    position: relative; /* Positions navigation elements absolutely within this container */
+    max-width: 100%; /* Full width of its container */
+    margin: auto; /* Centers the container */
+    height: 31.25em; /* Fixed height for the slideshow */
+}
+
+/* 
+   HIDE RADIO BUTTONS
+   The radio buttons control slide changes but are visually hidden.
+*/
+.slideshow-container input[type="radio"] {
+    display: none; /* Hides the radio buttons visually */
+}
+
+/* 
+   SLIDES CONTAINER
+   Wrapper that holds all individual slides with hidden overflow.
+*/
+.slides {
+    position: relative; /* Positions slides absolutely within this container */
+    height: 100%; /* Full height of parent container */
+    overflow: hidden; /* Hides other slides */
+}
+
+/* 
+   INDIVIDUAL SLIDE
+   Each slide is positioned absolutely and transitions opacity for fade effect.
+*/
+.slide {
+    position: absolute; /* Positions slides on top of each other */
+    top: 0;
+    left: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    opacity: 0; /* Hidden by default */
+    transition: opacity 0.6s ease-in-out; /* Smooth fade transition */
+    z-index: 1; /* Base stacking order */
+}
+
+.slide img {
+    width: 100%; /* Full width of container */
+    height: 31.25em; /* Matches container height */
+    object-fit: cover; /* Crops image to fill space while maintaining aspect ratio */
+    filter: brightness(0.7); /* Darkens image slightly for better text readability */
+}
+
+/* 
+   SLIDE CONTENT
+   Positions text content in the center of each slide.
+*/
+.slide-content {
+    position: absolute; /* Positions text over the image */
+    top: 50%; /* Centers vertically */
+    left: 50%; /* Centers horizontally */
+    transform: translate(-50%, -50%); /* Precisely centers the element */
+    text-align: center; /* Centers text */
+    color: var(--text-light); /* Light text for contrast */
+    z-index: 2; /* Places text above image */
+    padding: 2rem; /* Padding around text */
+}
+
+.slide-content h2 {
+    font-size: 3rem; /* Large heading size */
+    margin-bottom: 1rem; /* Space below heading */
+    color: var(--text-light); /* Overrides default heading color */
+}
+
+.slide-content p {
+    font-size: 1.2rem; /* Slightly larger paragraph text */
+    margin-bottom: 2rem; /* Space below paragraph */
+    max-width: 600px; /* Limits line length for readability */
+    margin-left: auto; /* Centers the paragraph */
+    margin-right: auto; /* Centers the paragraph */
+}
+
+/* 
+   SLIDE VISIBILITY CONTROL
+   Shows the appropriate slide when its corresponding radio button is checked.
+*/
+#slide1:checked ~ .slides .slide:nth-child(1),
+#slide2:checked ~ .slides .slide:nth-child(2),
+#slide3:checked ~ .slides .slide:nth-child(3),
+#slide4:checked ~ .slides .slide:nth-child(4),
+#slide5:checked ~ .slides .slide:nth-child(5),
+#slide6:checked ~ .slides .slide:nth-child(6) {
+    opacity: 1; /* Makes the slide fully visible */
+    z-index: 2; /* Brings it to the front */
+}
+
+/* 
+   NAVIGATION DOTS CONTAINER
+   Positions the dot navigation at the bottom center of the slideshow.
+*/
+.dot-container {
+    text-align: center; /* Centers the dots */
+    position: absolute; /* Positions relative to slideshow container */
+    bottom: 1.25rem; /* Distance from bottom */
+    width: 100%; /* Full width */
+    z-index: 3; /* Places dots above slides */
+}
+
+/* 
+   INDIVIDUAL DOTS
+   Styles for the circular navigation indicators.
+*/
+.dot {
+    cursor: pointer; /* Shows hand cursor on hover */
+    height: 0.9375rem; /* Dot size */
+    width: 0.9375rem; /* Dot size */
+    margin: 0 0.3125rem; /* Space between dots */
+    background-color: rgba(255, 255, 255, 0.5); /* Semi-transparent white */
+    border-radius: 50%; /* Perfect circle */
+    display: inline-block; /* Displays dots in a row */
+    transition: background-color 0.6s ease; /* Smooth color transition */
+}
+
+/* 
+   ACTIVE DOT STYLING
+   Changes the appearance of the dot corresponding to the current slide.
+*/
+#slide1:checked ~ .dot-container .dot:nth-child(1),
+#slide2:checked ~ .dot-container .dot:nth-child(2),
+#slide3:checked ~ .dot-container .dot:nth-child(3),
+#slide4:checked ~ .dot-container .dot:nth-child(4),
+#slide5:checked ~ .dot-container .dot:nth-child(5),
+#slide6:checked ~ .dot-container .dot:nth-child(6) {
+    background-color: var(--accent-color); /* Gold color for active dot */
+}
+
+.dot:hover {
+    background-color: rgba(255, 255, 255, 0.8); /* Brighter white on hover */
+}
+
+/* 
+   NAVIGATION BUTTONS (PREV/NEXT)
+   Container for previous and next arrow buttons.
+*/
+.nav-buttons {
+    position: absolute; /* Positions within slideshow container */
+    top: 50%; /* Centers vertically */
+    width: 100%; /* Full width */
+    z-index: 3; /* Above slides */
+    pointer-events: none; /* Allows clicks to pass through to hidden radio buttons */
+}
+
+/* 
+   INDIVIDUAL NAVIGATION BUTTONS
+   Styles for the previous and next arrow buttons.
+*/
+.nav-buttons label {
+    cursor: pointer; /* Hand cursor on hover */
+    position: absolute; /* Positions arrows on sides */
+    width: auto; /* Width based on content */
+    margin-top: -1.375rem; /* Adjusts vertical position */
+    padding: 1rem; /* Clickable area */
+    color: white; /* Arrow color */
+    font-weight: bold; /* Bold arrows */
+    font-size: 1.125rem; /* Arrow size */
+    transition: 0.6s ease; /* Smooth transition */
+    border-radius: 0 0.1875rem 0.1875rem 0; /* Rounded corners */
+    user-select: none; /* Prevents text selection */
+    background-color: rgba(0, 0, 0, 0.3); /* Semi-transparent background */
+    pointer-events: auto; /* Enables clicking on the labels */
+}
+
+.nav-buttons .next {
+    right: 0; /* Positions next button on right side */
+    border-radius: 3px 0 0 3px; /* Rounded corners */
+}
+
+.nav-buttons .prev {
+    left: 0; /* Positions previous button on left side */
+    border-radius: 0 0.1875rem 0.1875rem 0; /* Rounded corners */
+}
+
+.nav-buttons label:hover {
+    background-color: rgba(0, 0, 0, 0.8); /* Darker background on hover */
+}
+
+/* 
+   HIDE NAVIGATION BUTTONS BY DEFAULT
+   Navigation buttons are hidden initially and shown based on slide state.
+*/
+.nav-buttons {
+    display: none; /* Hidden by default */
+}
+
+/* 
+   SHOW NAVIGATION BUTTONS FOR CURRENT SLIDE
+   Displays the navigation buttons when corresponding slide is active.
+*/
+.slideshow-container #slide1:checked ~ .nav-buttons.slide1,
+.slideshow-container #slide2:checked ~ .nav-buttons.slide2,
+.slideshow-container #slide3:checked ~ .nav-buttons.slide3,
+.slideshow-container #slide4:checked ~ .nav-buttons.slide4,
+.slideshow-container #slide5:checked ~ .nav-buttons.slide5,
+.slideshow-container #slide6:checked ~ .nav-buttons.slide6 {
+    display: block; /* Shows navigation buttons */
+}
+
+/* 
+   AUTOMATIC SLIDESHOW ANIMATION
+   Creates a timed animation that automatically cycles through slides.
+*/
+.slideshow-container {
+    animation: slideShow 24s infinite; /* 24-second cycle, repeats infinitely */
+}
+
+@keyframes slideShow {
+    /* Keyframes control which slide is visible at different points in the animation */
+    0% { /* Slide 1 */ }
+    16.66% { /* Slide 1 to 2 transition */ }
+    16.67% { /* Slide 2 */ }
+    33.33% { /* Slide 2 to 3 transition */ }
+    33.34% { /* Slide 3 */ }
+    50% { /* Slide 3 to 4 transition */ }
+    50.01% { /* Slide 4 */ }
+    66.66% { /* Slide 4 to 5 transition */ }
+    66.67% { /* Slide 5 */ }
+    83.33% { /* Slide 5 to 6 transition */ }
+    83.34% { /* Slide 6 */ }
+    100% { /* Slide 6 to 1 transition */ }
+}
+
+/* 
+   PAUSE ANIMATION ON HOVER
+   Stops the automatic slideshow when user hovers over it for better control.
+*/
+.slideshow-container:hover {
+    animation-play-state: paused; /* Pauses the animation */
+}
+
+/* 
+   CALL-TO-ACTION BUTTON
+   Styles for prominent buttons that encourage user interaction.
+*/
+.cta-button {
+    display: inline-block; /* Allows padding and transforms */
+    background: var(--accent-color); /* Gold background */
+    color: var(--text-dark); /* Dark text for contrast */
+    padding: 1rem 2rem; /* Generous padding for clickable area */
+    border-radius: 50px; /* Fully rounded ends */
+    font-weight: 600; /* Bold text */
+    transition: all 0.3s ease; /* Smooth transition for all properties */
+    box-shadow: var(--shadow); /* Subtle shadow */
+}
+
+.cta-button:hover {
+    background: var(--primary-color); /* Changes to red on hover */
+    color: var(--text-light); /* Light text on hover */
+    transform: translateY(-2px); /* Lifts button slightly */
+    box-shadow: var(--shadow-hover); /* Enhanced shadow on hover */
+}
+
+/* 
+   MAIN CONTENT AREA
+   Styles for the central content container of the page.
+*/
+main {
+    max-width: 1200px; /* Maximum width of content */
+    margin: 0 auto; /* Centers the container */
+    padding: 0 2rem; /* Padding on sides */
+}
+
+/* 
+   SECTION STYLES
+   Basic styling for content sections with spacing between them.
+*/
+section {
+    margin-bottom: 3rem; /* Space between sections */
+}
+
+/* 
+   SECTION HEADINGS
+   Styles for section titles with decorative underline.
+*/
+h2 {
+    font-size: 2.5rem; /* Large size for section headings */
+    margin-bottom: 2rem; /* Space below heading */
+    text-align: center; /* Centers the heading */
+    position: relative; /* Positions pseudo-element */
+}
+
+h2::after {
+    content: ''; /* Required for pseudo-element */
+    display: block; /* Makes it a block element */
+    width: 3.125rem; /* Width of the underline */
+    height: 0.1875rem; /* Height of the underline */
+    background: var(--primary-color); /* Red color for underline */
+    margin: 0.5rem auto; /* Centers the underline with space above */
+}
+
+/* 
+   CATEGORY FILTER BUTTONS
+   Styles for the product category filter buttons.
+*/
+.category-filter {
+    display: flex; /* Displays buttons in a row */
+    justify-content: center; /* Centers the buttons */
+    gap: 1rem; /* Space between buttons */
+    margin-bottom: 3rem; /* Space below filter row */
+    flex-wrap: wrap; /* Allows buttons to wrap on smaller screens */
+    padding: 0 1rem; /* Padding on sides */
+}
+
+/* 
+   INDIVIDUAL FILTER BUTTON
+   Styles for each filter button with gradient background and hover effects.
+*/
+.filter-button {
+    background: linear-gradient(135deg, #8B4513, #A0522D); /* Brown gradient */
+    color: white; /* White text */
+    border: none; /* Removes default border */
+    padding: 0.75rem 1.5rem; /* Button padding */
+    border-radius: 50px; /* Rounded ends */
+    font-family: 'Merriweather', serif; /* Formal font */
+    font-weight: 600; /* Bold text */
+    font-size: 0.95rem; /* Text size */
+    cursor: pointer; /* Hand cursor on hover */
+    transition: all 0.3s ease; /* Smooth transitions */
+    box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.2); /* Shadow for depth */
+    position: relative; /* For pseudo-element positioning */
+    overflow: hidden; /* Hides overflow from pseudo-element */
+    text-transform: uppercase; /* ALL CAPS text */
+    letter-spacing: 0.03125rem; /* Slight letter spacing */
+}
+
+/* 
+   FILTER BUTTON HOVER EFFECT
+   Creates a shining animation effect on button hover.
+*/
+.filter-button::before {
+    content: ''; /* Required for pseudo-element */
+    position: absolute; /* Positions over button */
+    top: 0;
+    left: -100%; /* Starts off left side */
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent); /* Shine effect */
+    transition: left 0.5s; /* Animates position */
+}
+
+.filter-button:hover::before {
+    left: 100%; /* Moves shine across button */
+}
+
+.filter-button:hover {
+    transform: translateY(-2px); /* Lifts button on hover */
+    box-shadow: 0 0.375rem 0.75rem rgba(0, 0, 0, 0.3); /* Enhanced shadow */
+    background: linear-gradient(135deg, #A0522D, #CD853F); /* Lighter gradient on hover */
+}
+
+/* 
+   ACTIVE FILTER BUTTON
+   Styles for the currently selected filter button.
+*/
+.filter-button.active {
+    background: linear-gradient(135deg, #8B0000, #A0522D); /* Red-brown gradient */
+    color: #FFD700; /* Gold text */
+    box-shadow: 0 0.375rem 0.75rem rgba(139, 0, 0, 0.4); /* Red shadow */
+    transform: translateY(-2px); /* Lifted appearance */
+}
+
+.filter-button.active::after {
+    content: ''; /* Required for pseudo-element */
+    position: absolute; /* Positions at bottom of button */
+    bottom: -0.125rem; /* Slightly below button */
+    left: 50%; /* Centers horizontally */
+    transform: translateX(-50%); /* Precisely centers */
+    width: 80%; /* Width of indicator */
+    height: 0.1875rem; /* Height of indicator */
+    background: #FFD700; /* Gold color */
+    border-radius: 0.125rem; /* Slightly rounded */
+}
+
+/* 
+   PRODUCTS GRID
+   Displays products in a responsive grid layout.
+*/
+.products-grid {
+    display: grid; /* CSS Grid for layout */
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Responsive columns - min 280px, equal width */
+    gap: 2rem; /* Space between grid items */
+    margin-bottom: 2rem; /* Space below grid */
+}
+
+/* 
+   INDIVIDUAL PRODUCT ITEM
+   Styles for each product card with hover effects.
+*/
+.product-item {
+    background: white; /* White background */
+    border-radius: 10px; /* Rounded corners */
+    overflow: hidden; /* Hides image overflow */
+    box-shadow: var(--shadow); /* Subtle shadow */
+    transition: all 0.3s ease; /* Smooth transitions */
+    text-align: center; /* Centers content */
+    display: flex; /* Flexbox for layout */
+    flex-direction: column; /* Stacks content vertically */
+}
+
+.product-item:hover {
+    transform: translateY(-5px); /* Lifts card on hover */
+    box-shadow: var(--shadow-hover); /* Enhanced shadow on hover */
+}
+
+.product-item img {
+    width: 100%; /* Full width of container */
+    height: auto; /* Maintains aspect ratio */
+    aspect-ratio: 4/3; /* Consistent proportion for all images */
+    object-fit: cover; /* Crops images to fill space */
+    cursor: pointer; /* Indicates image is interactive */
+    transition: transform 0.3s ease; /* Smooth zoom transition */
+}
+
+.product-item:hover img {
+    transform: scale(1.05); /* Slight zoom on hover */
+}
+
+.product-item h3 {
+    margin: 1rem 0 0.5rem; /* Space around product name */
+    color: var(--primary-color); /* Red color for product name */
+}
+
+.product-item p {
+    padding: 0 1rem; /* Padding around description */
+    color: var(--text-dark); /* Dark text color */
+}
+
+/* 
+   PRICE STYLING
+   Styles for product price display.
+*/
+.price {
+    font-weight: bold; /* Bold text */
+    color: var(--primary-color); /* Red color */
+    font-size: 1.2rem; /* Slightly larger text */
+    margin: 1rem 0; /* Space above and below */
+}
+
+/* 
+   ABOUT PREVIEW SECTION
+   Styles for the about section with card-like appearance.
+*/
+.about-preview {
+    background: white; /* White background */
+    padding: 3rem; /* Generous padding */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: var(--shadow); /* Subtle shadow */
+}
+
+/* 
+   TEAM SECTION
+   Styles for the team member section with gradient background.
+*/
+.team {
+    background: linear-gradient(135deg, var(--background-light), #FFF5EE); /* Light gradient */
+    padding: 4rem 2rem; /* Generous padding */
+    border-radius: 15px; /* Rounded corners */
+    margin: 3rem 0; /* Space above and below */
+}
+
+.team h2 {
+    font-size: 3rem; /* Large heading size */
+    margin-bottom: 3rem; /* Space below heading */
+    color: var(--primary-color); /* Red color */
+    text-shadow: 0.125rem 0.125rem 0.25rem rgba(0,0,0,0.1); /* Subtle text shadow */
+}
+
+/* 
+   TEAM MEMBERS GRID
+   Displays team members in a responsive grid.
+*/
+.team-members {
+    display: grid; /* CSS Grid for layout */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive columns */
+    gap: 3rem; /* Space between team members */
+    max-width: 1000px; /* Maximum width */
+    margin: 0 auto; /* Centers the grid */
+}
+
+/* 
+   INDIVIDUAL TEAM MEMBER CARD
+   Styles for each team member card with decorative elements and hover effects.
+*/
+.team-member {
+    background: white; /* White background */
+    border-radius: 20px; /* Rounded corners */
+    padding: 2rem; /* Padding inside card */
+    text-align: center; /* Centers content */
+    box-shadow: 0 0.5rem 1.5625rem rgba(139, 0, 0, 0.15); /* Red-tinted shadow */
+    transition: all 0.4s ease; /* Smooth transitions */
+    position: relative; /* For pseudo-element positioning */
+    overflow: hidden; /* Hides overflow */
+}
+
+/* 
+   TEAM MEMBER TOP BORDER
+   Colorful gradient border at top of team member card.
+*/
+.team-member::before {
+    content: ''; /* Required for pseudo-element */
+    position: absolute; /* Positions at top of card */
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 5px; /* Height of border */
+    background: linear-gradient(90deg, var(--primary-color), var(--accent-color), var(--secondary-color)); /* Color gradient */
+}
+
+.team-member:hover {
+    transform: translateY(-10px); /* Lifts card significantly on hover */
+    box-shadow: 0 0.9375rem 2.1875rem rgba(139, 0, 0, 0.25); /* Enhanced shadow on hover */
+}
+
+.team-member img {
+    width: 180px; /* Fixed width */
+    height: 180px; /* Fixed height */
+    border-radius: 50%; /* Circular image */
+    object-fit: cover; /* Crops image to fill circle */
+    border: 5px solid transparent; /* Transparent border for gradient effect */
+    background: linear-gradient(45deg, var(--primary-color), var(--secondary-color)) padding-box, /* Gradient fill */
+                linear-gradient(45deg, var(--accent-color), var(--primary-color)) border-box; /* Gradient border */
+    margin-bottom: 1.5rem; /* Space below image */
+    transition: all 0.3s ease; /* Smooth transitions */
+    position: relative; /* Positioning context */
+}
+
+.team-member:hover img {
+    transform: scale(1.1); /* Slight zoom on hover */
+    border-color: var(--accent-color); /* Gold border on hover */
+    box-shadow: 0 0 1.25rem rgba(218, 165, 32, 0.5); /* Gold glow on hover */
+}
+
+.team-member h3 {
+    font-size: 1.5rem; /* Name size */
+    margin-bottom: 0.5rem; /* Space below name */
+    color: var(--primary-color); /* Red color for name */
+    font-weight: 700; /* Bold text */
+}
+
+.team-member p {
+    color: var(--secondary-color); /* Brown color for position */
+    font-weight: 600; /* Semi-bold text */
+    font-size: 1.1rem; /* Slightly larger text */
+    margin-bottom: 1rem; /* Space below position */
+}
+
+/* 
+   TEAM MEMBER BOTTOM BORDER
+   Colorful gradient border at bottom of team member card.
+*/
+.team-member::after {
+    content: ''; /* Required for pseudo-element */
+    position: absolute; /* Positions at bottom of card */
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 3px; /* Height of border */
+    background: linear-gradient(90deg, var(--secondary-color), var(--accent-color), var(--primary-color)); /* Color gradient */
+}
+
+/* 
+   TEAM MEMBER BACKGROUND DECORATION
+   Subtle radial gradients for visual interest.
+*/
+.team-member {
+    background-image: 
+        radial-gradient(circle at 20% 80%, rgba(139, 0, 0, 0.05) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(160, 82, 45, 0.05) 0%, transparent 50%);
+}
+
+/* 
+   SERVICES SECTION
+   Styles for the services section.
+*/
+.services {
+    background: var(--background-light); /* Light background */
+    padding: 3rem; /* Padding inside section */
+    border-radius: 10px; /* Rounded corners */
+}
+
+/* 
+   CONTACT CALL-TO-ACTION
+   Prominent section encouraging contact with gradient background.
+*/
+.contact-cta {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)); /* Red to brown gradient */
+    color: var(--text-light); /* Light text for contrast */
+    padding: 3rem 2rem; /* Generous padding */
+    border-radius: 10px; /* Rounded corners */
+    text-align: center; /* Centers content */
+    margin: 2rem 0; /* Space above and below */
+}
+
+/* 
+   FOOTER STYLES
+   Styles for the site footer with dark background.
+*/
+footer {
+    background: var(--background-dark); /* Dark background */
+    color: var(--text-light); /* Light text */
+    padding: 3rem 2rem 1rem; /* Padding: top, sides, bottom */
+    margin-top: 4rem; /* Space above footer */
+}
+
+footer h3 {
+    color: var(--accent-color); /* Gold color for footer headings */
+    margin-bottom: 1rem; /* Space below headings */
+}
+
+footer ul {
+    list-style: none; /* Removes bullet points */
+}
+
+footer ul li {
+    margin-bottom: 0.5rem; /* Space between list items */
+}
+
+footer a {
+    color: var(--text-light); /* Light color for links */
+}
+
+footer a:hover {
+    color: var(--accent-color); /* Gold color on hover */
+}
+
+/* 
+   SOCIAL MEDIA ICONS
+   Styles for social media links in the footer.
+*/
+.social-icons {
+    display: flex; /* Displays icons in a row */
+    gap: 1rem; /* Space between icons */
+    margin-top: 0.5rem; /* Space above icon row */
+}
+
+.social-icons a {
+    display: inline-flex; /* Centers icon within link */
+    align-items: center; /* Vertical centering */
+    justify-content: center; /* Horizontal centering */
+    width: 2.5rem; /* Fixed width */
+    height: 2.5rem; /* Fixed height */
+    border-radius: 50%; /* Circular buttons */
+    color: white; /* Icon color */
+    font-size: 1.25rem; /* Icon size */
+    transition: background-color 0.3s ease; /* Smooth background transition */
+}
+
+/* Individual social media brand colors */
+.social-icons a.facebook {
+    background-color: #3b5998; /* Facebook blue */
+}
+
+.social-icons a.facebook:hover {
+    background-color: #2d4373; /* Darker blue on hover */
+}
+
+.social-icons a.whatsapp {
+    background-color: #25d366; /* WhatsApp green */
+}
+
+.social-icons a.whatsapp:hover {
+    background-color: #1ebe57; /* Darker green on hover */
+}
+
+.social-icons a.tiktok {
+    background-color: #000000; /* TikTok black */
+}
+
+.social-icons a.tiktok:hover {
+    background-color: #333333; /* Dark gray on hover */
+}
+
+.social-icons a.instagram {
+    background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285aeb 90%); /* Instagram gradient */
+}
+
+.social-icons a.instagram:hover {
+    filter: brightness(0.85); /* Darkens slightly on hover */
+}
+
+/*
+   RESPONSIVE DESIGN: TABLET AND SMALLER
+   Adjusts styles for screens 768px wide and below.
+*/
+@media (max-width: 768px) {
+    /* Header adjustments for mobile */
+    header .container {
+        flex-direction: column; /* Stacks logo and nav vertically */
+        text-align: center; /* Centers content */
+        position: relative; /* Positioning context for hamburger */
+    }
+
+    /* Contact page specific mobile fixes */
+    .contact-hero {
+        padding: 2rem 1rem; /* Reduced padding for mobile */
+        margin-bottom: 2rem; /* Space below hero */
+    }
+
+    .contact-hero h2 {
+        font-size: 2rem; /* Smaller heading for mobile */
+        line-height: 1.2; /* Better line spacing */
+        word-wrap: break-word; /* Allow text to wrap */
+    }
+
+    /* Improved contact grid for mobile */
+    .contact-grid {
+        grid-template-columns: 1fr !important; /* Force single column */
+        gap: 2rem !important; /* Space between sections */
+        padding: 0 1rem !important; /* Add horizontal padding */
+        max-width: 100% !important; /* Ensure no overflow */
+        margin: 0 auto !important; /* Center the grid */
+        display: flex !important; /* Use flexbox for better mobile control */
+        flex-direction: column !important; /* Stack vertically */
+    }
+
+    /* Contact info article mobile styles */
+    .contact-info article {
+        margin: 0 !important; /* Remove margins */
+        padding: 1.5rem !important; /* Add padding for better spacing */
+        background: white; /* White background for contrast */
+        border-radius: 10px; /* Rounded corners */
+        box-shadow: var(--shadow); /* Subtle shadow */
+    }
+
+    .contact-info article h3 {
+        font-size: 1.5rem; /* Smaller heading */
+        margin-bottom: 1rem; /* Space below heading */
+        color: var(--primary-color); /* Maintain brand color */
+    }
+
+    /* Address and contact details mobile improvements */
+    .contact-info address {
+        font-style: normal; /* Remove italic for better mobile readability */
+        line-height: 1.6; /* Better line spacing */
+        margin-bottom: 1.5rem; /* Space below address */
+    }
+
+    .contact-info address p {
+        margin-bottom: 1rem; /* Space between address lines */
+        word-wrap: break-word; /* Break long words */
+        overflow-wrap: break-word; /* Better word breaking */
+    }
+
+    .contact-info p {
+        margin-bottom: 1rem; /* Space between contact methods */
+        line-height: 1.5; /* Better readability */
+    }
+
+    /* Contact links mobile improvements */
+    .contact-info a {
+        word-break: break-all; /* Break long URLs/emails */
+        display: inline-block; /* Better link handling */
+        max-width: 100%; /* Prevent overflow */
+    }
+
+    /* Map section mobile improvements */
+    .map-section {
+        padding: 0 1rem; /* Add horizontal padding */
+        margin-bottom: 2rem; /* Space below section */
+    }
+
+    .map-section h3 {
+        font-size: 1.5rem; /* Smaller heading */
+        margin-bottom: 1rem; /* Space below heading */
+        text-align: center; /* Center heading */
+    }
+
+    .map-container {
+        padding: 1rem 0; /* Vertical padding */
+        text-align: center; /* Center content */
+    }
+
+    .map-container p {
+        margin-bottom: 1rem; /* Space below description */
+        font-size: 0.9rem; /* Smaller text for mobile */
+        line-height: 1.4; /* Better readability */
+        padding: 0 0.5rem; /* Horizontal padding */
+    }
+
+    /* Map iframe mobile responsiveness */
+    .map-iframe-container {
+        width: 100%; /* Full width */
+        max-width: 100%; /* Prevent overflow */
+        border-radius: 10px; /* Rounded corners */
+        overflow: hidden; /* Hide overflow */
+        margin: 0 auto; /* Center the container */
+        box-shadow: var(--shadow); /* Subtle shadow */
+    }
+
+    .map-iframe-container iframe {
+        width: 100% !important; /* Force full width */
+        height: 300px !important; /* Fixed height for mobile */
+        max-width: 100% !important; /* Prevent horizontal overflow */
+        border: none !important; /* Remove border */
+        display: block; /* Ensure proper display */
+    }
+
+    /* Contact form mobile improvements */
+    .contact-grid form {
+        padding: 1.5rem; /* Add padding */
+        background: white; /* White background */
+        border-radius: 10px; /* Rounded corners */
+        box-shadow: var(--shadow); /* Subtle shadow */
+        margin: 0; /* Remove margins */
+    }
+
+    /* Form groups mobile spacing */
+    .form-group {
+        margin-bottom: 1.5rem !important; /* Space between form fields */
+    }
+
+    .form-group:last-child {
+        margin-bottom: 0 !important; /* Remove margin from last field */
+    }
+
+    /* Form labels mobile styles */
+    .form-group label {
+        font-size: 1rem; /* Readable label size */
+        margin-bottom: 0.5rem; /* Space below labels */
+        display: block; /* Ensure labels are on their own line */
+        font-weight: 600; /* Bold labels */
+        color: var(--primary-color); /* Brand color */
+    }
+
+    /* Form inputs mobile styles */
+    .form-group input,
+    .form-group textarea {
+        width: 100% !important; /* Force full width */
+        max-width: 100% !important; /* Prevent overflow */
+        padding: 1rem !important; /* Larger touch-friendly padding */
+        font-size: 1rem !important; /* Larger text for mobile */
+        border: 2px solid var(--border-color) !important; /* Slightly thicker border */
+        border-radius: 8px !important; /* More rounded corners */
+        min-height: 48px !important; /* Proper touch target size */
+        box-sizing: border-box !important; /* Include padding in width */
+        word-wrap: break-word; /* Break long words */
+        overflow-wrap: break-word; /* Better word breaking */
+    }
+
+    .form-group textarea {
+        min-height: 120px !important; /* Minimum height for textarea */
+        resize: vertical; /* Allow vertical resizing only */
+    }
+
+    /* Form focus states for mobile */
+    .form-group input:focus,
+    .form-group textarea:focus {
+        outline: none !important; /* Remove default outline */
+        border-color: var(--primary-color) !important; /* Red border on focus */
+        box-shadow: 0 0 0 3px rgba(139, 0, 0, 0.2) !important; /* Larger focus ring */
+    }
+
+    /* Contact form submit button mobile styles */
+    .contact-grid .cta-button {
+        width: 100% !important; /* Full width button */
+        max-width: 100% !important; /* Prevent overflow */
+        padding: 1rem 2rem !important; /* Larger padding for mobile */
+        font-size: 1.1rem !important; /* Larger text */
+        min-height: 56px !important; /* Proper touch target */
+        margin-top: 1rem !important; /* Space above button */
+        border-radius: 8px !important; /* More rounded corners */
+        display: block !important; /* Ensure proper display */
+        box-sizing: border-box !important; /* Include padding in width */
+    }
+
+    /* Main content container mobile constraints */
+    main {
+        max-width: 100% !important; /* Prevent overflow */
+        padding: 0 1rem !important; /* Add horizontal padding */
+        overflow-x: hidden !important; /* Hide horizontal overflow */
+    }
+
+    /* Section spacing mobile adjustments */
+    section {
+        margin-bottom: 2rem !important; /* Space between sections */
+    }
+
+    /* Contact info section mobile padding */
+    .contact-info {
+        padding: 0 !important; /* Remove padding, handled by grid */
+        margin: 0 !important; /* Remove margins */
+    }
+    
+    /* Hide navigation by default on mobile */
+    nav {
+        display: none; /* Hidden initially */
+        width: 100%; /* Full width when shown */
+    }
+    
+    /* Show navigation when hamburger is checked */
+    .nav-toggle:checked + .nav-toggle-label + nav {
+        display: block; /* Shows navigation */
+    }
+    
+    /* Mobile navigation styles */
+    nav ul {
+        flex-direction: column; /* Stacks nav items vertically */
+        gap: 0.5rem; /* Space between items */
+        background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)); /* Same gradient as header */
+        padding: 1rem 0; /* Padding above and below */
+        border-radius: 0 0 10px 10px; /* Rounded bottom corners */
+    }
+    
+    nav ul li a {
+        display: block; /* Makes entire area clickable */
+        padding: 0.75rem 1rem; /* Clickable area */
+        font-weight: 700; /* Bold text */
+        color: var(--text-light); /* Light text */
+    }
+    
+    nav ul li a:hover,
+    nav ul li a.active {
+        background-color: rgba(255, 255, 255, 0.3); /* Semi-transparent background */
+        color: var(--accent-color); /* Gold text on hover/active */
+        border-radius: 5px; /* Rounded corners */
+    }
+    
+    /* Hamburger menu button styles */
+    .nav-toggle {
+        display: none; /* Hide the checkbox */
+    }
+
+    .nav-toggle-label {
+        display: flex; /* Flexbox for hamburger bars */
+        flex-direction: column; /* Stacks bars vertically */
+        justify-content: space-around; /* Spaces bars evenly */
+        width: 2.5rem; /* Button width */
+        height: 2.5rem; /* Button height */
+        cursor: pointer; /* Hand cursor */
+        position: absolute; /* Positions relative to header */
+        top: 1.5rem; /* Distance from top - adjusted for better visibility */
+        right: 1.5rem; /* Distance from right - adjusted for better positioning */
+        z-index: 1100; /* Above other content */
+        padding: 0.5rem; /* Add padding for better touch target */
+        background: transparent; /* Transparent background */
+        border: none; /* Remove any border */
+    }
+
+    .nav-toggle-label span {
+        display: block; /* Makes bars block elements */
+        width: 100%; /* Full width of container */
+        height: 0.25rem; /* Bar height */
+        background: var(--text-light); /* Light color for contrast */
+        border-radius: 10px; /* Rounded ends */
+        transition: all 0.3s linear; /* Smooth transition */
+        position: relative; /* Positioning context */
+        transform-origin: 1px; /* Rotation origin point */
+        opacity: 1; /* Ensure spans are visible */
+    }
+    
+    /* Hamburger to X animation */
+    .nav-toggle:checked + .nav-toggle-label span:nth-child(1) {
+        transform: rotate(45deg); /* Rotates top bar */
+    }
+    
+    .nav-toggle:checked + .nav-toggle-label span:nth-child(2) {
+        opacity: 0; /* Hides middle bar */
+        transform: translateX(20px); /* Moves off screen */
+    }
+    
+    .nav-toggle:checked + .nav-toggle-label span:nth-child(3) {
+        transform: rotate(-45deg); /* Rotates bottom bar */
+    }
+    
+    /* Slideshow adjustments for mobile */
+    .slideshow-container {
+        height: 25em; /* Smaller height */
+    }
+
+    .slide img {
+        height: 25em; /* Matches container height */
+    }
+
+    .slide-content {
+        padding: 1.5rem; /* Reduced padding for mobile */
+        max-width: 90%; /* Ensure content doesn't overflow */
+    }
+
+    .slide-content h2 {
+        font-size: 1.2rem; /* Smaller heading for mobile */
+        line-height: 1.2; /* Better line spacing for readability */
+        margin-bottom: 0.6rem; /* Reduced margin */
+        word-wrap: break-word; /* Allow text to wrap */
+        hyphens: auto; /* Add hyphens for better text flow */
+        max-width: 100%; /* Prevent overflow */
+        text-align: center; /* Keep centered */
+        padding: 0 0.5rem; /* Add some horizontal padding */
+        letter-spacing: 0.02em; /* Slightly tighter letter spacing */
+    }
+
+    .slide-content p {
+        font-size: 0.9rem; /* Smaller text */
+        line-height: 1.3; /* Better readability */
+        margin-bottom: 1.2rem; /* Space before button */
+        max-width: 100%; /* Ensure text doesn't overflow */
+        word-wrap: break-word; /* Break long words */
+        hyphens: auto; /* Add hyphens for better text flow */
+    }
+
+    /* Mobile-specific CTA button styles for slideshow */
+    .slide-content .cta-button {
+        padding: 0.6rem 1.2rem; /* Smaller button padding */
+        font-size: 0.8rem; /* Smaller text */
+        min-height: 44px; /* Proper touch target size */
+        display: inline-block; /* Ensure proper button display */
+        width: auto; /* Allow natural width */
+        max-width: 160px; /* Prevent overly wide buttons */
+        margin: 0 auto; /* Center the button */
+        line-height: 1.2; /* Better text line height */
+    }
+
+    /* Mobile Contact Form Styles */
+    .contact-info {
+        padding: 1rem; /* Reduced padding for mobile */
+    }
+
+    .contact-grid {
+        grid-template-columns: 1fr; /* Single column layout on mobile */
+        gap: 2rem; /* Space between contact info and form */
+        padding: 0; /* Remove extra padding */
+        display: flex; /* Use flexbox for mobile */
+        flex-direction: column; /* Stack items vertically */
+    }
+
+    /* Reorder so form appears first on mobile */
+    .contact-grid article:nth-child(2) {
+        order: -1; /* Move form to top */
+    }
+
+    .contact-grid article {
+        margin: 0; /* Remove margins for better mobile layout */
+    }
+
+    .contact-grid article h3 {
+        font-size: 1.5rem; /* Smaller heading for mobile */
+        margin-bottom: 1rem; /* Space below heading */
+    }
+
+    /* Mobile Form Element Styles */
+    .form-group {
+        margin-bottom: 1.5rem; /* Maintain spacing between form fields */
+    }
+
+    .form-group label {
+        font-size: 1rem; /* Readable label size */
+        margin-bottom: 0.5rem; /* Space below labels */
+        display: block; /* Ensure labels are on their own line */
+    }
+
+    .form-group input,
+    .form-group textarea {
+        width: 100%; /* Full width inputs */
+        padding: 1rem; /* Larger touch-friendly padding */
+        font-size: 1rem; /* Larger text for mobile */
+        border: 2px solid var(--border-color); /* Slightly thicker border */
+        border-radius: 8px; /* More rounded corners */
+        min-height: 48px; /* Proper touch target size */
+        box-sizing: border-box; /* Include padding in width calculation */
+    }
+
+    .form-group textarea {
+        min-height: 120px; /* Minimum height for textarea */
+        resize: vertical; /* Allow vertical resizing only */
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus {
+        outline: none; /* Remove default outline */
+        border-color: var(--primary-color); /* Red border on focus */
+        box-shadow: 0 0 0 3px rgba(139, 0, 0, 0.2); /* Larger focus ring */
+    }
+
+    /* Mobile Contact Form Submit Button */
+    .contact-grid .cta-button {
+        width: 100%; /* Full width button */
+        padding: 1rem 2rem; /* Larger padding for mobile */
+        font-size: 1.1rem; /* Larger text */
+        min-height: 56px; /* Proper touch target */
+        margin-top: 1rem; /* Space above button */
+        border-radius: 8px; /* More rounded corners */
+    }
+    
+    /* Team section adjustments for mobile */
+    .team-members {
+        grid-template-columns: 1fr; /* Single column layout */
+        gap: 2rem; /* Space between items */
+    }
+    
+    .team h2 {
+        font-size: 2.5rem; /* Smaller heading */
+    }
+    
+    .team-member {
+        margin: 0 1rem; /* Horizontal margin */
+    }
+    
+    /* Product image adjustments for mobile */
+    .product-item img {
+        aspect-ratio: 16/9; /* Wider aspect ratio */
+    }
+}
+
+/* 
+   RESPONSIVE DESIGN: MOBILE (480px AND SMALLER)
+   Further adjustments for very small screens.
+*/
+@media (max-width: 480px) {
+    /* Hero and button adjustments */
+    .hero {
+        padding: 3rem 1rem; /* Reduced padding */
+    }
+
+    .cta-button {
+        padding: 0.5rem 0.9375rem; /* Smaller button */
+        font-size: 0.9rem; /* Smaller text */
+    }
+    
+    /* Team section adjustments */
+    .team {
+        padding: 2rem 1rem; /* Reduced padding */
+    }
+    
+    .team h2 {
+        font-size: 2rem; /* Smaller heading */
+    }
+    
+    .team-member img {
+        width: 150px; /* Smaller image */
+        height: 150px; /* Smaller image */
+    }
+    
+    /* Slideshow adjustments */
+    .slideshow-container {
+        height: 18.75em; /* Smaller height */
+    }
+
+    .slide img {
+        height: 18.75em; /* Matches container */
+    }
+
+    .slide-content {
+        padding: 1rem; /* Reduced padding */
+    }
+
+    .slide-content h2 {
+        font-size: 1rem; /* Even smaller heading for very small screens */
+        line-height: 1.1; /* Tighter line spacing for mobile */
+        margin-bottom: 0.4rem; /* Reduced margin */
+        word-wrap: break-word; /* Allow text to wrap */
+        hyphens: auto; /* Add hyphens for better text flow */
+        max-width: 100%; /* Prevent overflow */
+        text-align: center; /* Keep centered */
+        padding: 0 0.3rem; /* Minimal horizontal padding */
+        letter-spacing: -0.01em; /* Slightly tighter letter spacing */
+        overflow-wrap: break-word; /* Better word breaking */
+    }
+    
+    /* Product image adjustments */
+    .product-item img {
+        aspect-ratio: 1/1; /* Square aspect ratio */
+    }
+    
+    /* Filter button adjustments */
+    .filter-button {
+        padding: 0.5rem 1rem; /* Smaller button */
+        font-size: 0.8rem; /* Smaller text */
+    }
+    
+    /* Hamburger menu position adjustment */
+    .nav-toggle-label {
+        top: 2rem; /* Adjusted position */
+    }
+}
+
+/*
+   LARGE SCREENS - DESKTOPS (1200px AND LARGER)
+   Enhancements for larger screens.
+*/
+@media (min-width: 1200px) {
+    main {
+        max-width: 1400px; /* Wider container */
+        padding: 0 3rem; /* More padding */
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+        font-size: 1.1em; /* Slightly larger headings */
+    }
+
+    .products-grid {
+        gap: 3rem; /* More space between products */
+    }
+}
+
+/* 
+   VERY SMALL SCREENS (360px AND SMALLER)
+   Adjustments for very small mobile devices.
+*/
+@media (max-width: 360px) {
+    body {
+        font-size: 0.9rem; /* Smaller base font */
+    }
+
+    .cta-button {
+        padding: 0.5rem 1rem; /* Smaller button */
+        font-size: 0.8rem; /* Smaller text */
+    }
+
+    nav a {
+        padding: 0.3rem 0.6rem; /* Smaller nav items */
+        font-size: 0.8rem; /* Smaller text */
+    }
+
+    .filter-button {
+        padding: 0.4rem 0.8rem; /* Smaller filter buttons */
+        font-size: 0.75rem; /* Smaller text */
+    }
+}
+
+/* 
+   FORM STYLES
+   Basic styling for form elements throughout the site.
+*/
+form {
+    max-width: 600px; /* Limits form width */
+    margin: 0 auto; /* Centers forms */
+}
+
+.form-group {
+    margin-bottom: 1.5rem; /* Space between form fields */
+}
+
+label {
+    display: block; /* Makes labels block elements */
+    margin-bottom: 0.5rem; /* Space below labels */
+    font-weight: 600; /* Bold labels */
+    color: var(--primary-color); /* Red color for labels */
+}
+
+input, textarea, select {
+    width: 100%; /* Full width inputs */
+    padding: 0.5rem; /* Input padding */
+    border: 1px solid var(--border-color); /* Tan border */
+    border-radius: 5px; /* Rounded corners */
+    font-size: 1rem; /* Readable text size */
+}
+
+input:focus, textarea:focus, select:focus {
+    outline: none; /* Removes default outline */
+    border-color: var(--primary-color); /* Red border on focus */
+    box-shadow: 0 0 0 2px rgba(139, 0, 0, 0.2); /* Red glow on focus */
+}
+
+/* 
+   UTILITY CLASSES
+   Helper classes for common styling needs that can be applied in HTML.
+*/
+.text-center {
+    text-align: center; /* Centers text */
+}
+
+.mt-2 {
+    margin-top: 2rem; /* Top margin */
+}
+
+.mb-2 {
+    margin-bottom: 2rem; /* Bottom margin */
+}
+
+/* 
+   ADDITIONAL UTILITY CLASSES
+   More specific utility classes for various layout needs.
+*/
+.grid-two-columns-gap {
+    display: grid; /* CSS Grid layout */
+    grid-template-columns: 1fr 1fr; /* Two equal columns */
+    gap: 2rem; /* Space between columns */
+    align-items: center; /* Vertically centers content */
+}
+
+.about-hero h2 {
+    font-size: 3.5rem; /* Extra large heading */
+}
+
+.history h2 {
+    font-size: 3rem; /* Large heading */
+}
+
+.img-70-rounded {
+    width: 70%; /* 70% width */
+    border-radius: 5px; /* Slightly rounded corners */
+}
+
+.text-center-padding {
+    text-align: center; /* Centers text */
+    padding: 1.25rem; /* Adds padding */
+}
+
+.color-aliceblue {
+    color: aliceblue; /* Light blue text color */
+}
+
+.margin-horizontal-1rem {
+    margin: 0 1rem; /* Horizontal margin */
+}
+
+.footer-bottom {
+    text-align: center; /* Centers text */
+    margin-top: 0.78125em; /* Top margin */
+    padding-top: 0.78125em; /* Top padding */
+    border-top: 1px solid rgba(255, 255, 255, 0.3); /* Light top border */
+}
+
+.footer-grid {
+    display: grid; /* CSS Grid layout */
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Responsive columns */
+    gap: 2rem; /* Space between columns */
+    max-width: 1200px; /* Maximum width */
+    margin: 0 auto; /* Centers grid */
+}
+
+.footer-ul {
+    list-style: none; /* Removes bullets */
+    display: flex; /* Flexbox layout */
+    flex-direction: column; /* Vertical list */
+    gap: 0.5rem; /* Space between items */
+}
+
+.enquiry-form-container {
+    max-width: 800px; /* Maximum width */
+    margin: 0 auto; /* Centers container */
+    padding: 0.78125em; /* Padding */
+}
+
+.process-info {
+    background: #f9f9f9; /* Light gray background */
+    padding: 0.78125em; /* Padding */
+    border-radius: 10px; /* Rounded corners */
+    margin: 2em auto; /* Vertical margin, centered */
+    max-width: 800px; /* Maximum width */
+}
+
+.contact-grid {
+    display: grid; /* CSS Grid layout */
+    grid-template-columns: 1fr 1fr; /* Two equal columns */
+    gap: 3em; /* Large gap between columns */
+    max-width: 1200px; /* Maximum width */
+    margin: 0 auto; /* Centers grid */
+    padding: 1.25em; /* Padding */
+}
+
+.map-container {
+    text-align: center; /* Centers content */
+    padding: 1.25em; /* Padding */
+}
+
+.map-iframe-container {
+    border-radius: 10px; /* Rounded corners */
+    overflow: hidden; /* Hides overflow */
+    margin-top: 0.625em; /* Space above */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+.services-grid {
+    display: grid; /* CSS Grid layout */
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Responsive columns */
+    gap: 2rem; /* Space between items */
+}
+
+.contact-cta-buttons {
+    margin-top: 0.9375em; /* Space above buttons */
+}
+
+/* Ensure nav toggle checkbox is hidden */
+.nav-toggle {
+    display: none;
+}
+
+/*
+   CONTACT CTA BUTTONS MOBILE SPACING
+   Ensures proper spacing between Contact Us and Make Enquiry buttons on mobile
+*/
+
+/* For tablets and small screens up to 768px */
+@media (max-width: 768px) {
+    .contact-cta-buttons {
+        display: flex;              /* Use flexbox for alignment */
+        flex-direction: column;     /* Stack buttons vertically */
+        gap: 1rem;                  /* Space between buttons */
+        align-items: center;        /* Center buttons horizontally */
+        margin-top: 1.5rem;         /* Add top spacing */
+    }
+
+    .contact-cta-buttons .cta-button {
+        width: 100%;                /* Buttons take full width of container */
+        max-width: 15.625em;        /* Prevent overly large buttons (≈250px) */
+        margin: 0;                  /* Reset default margin */
+    }
+}
+
+/* For very small screens up to 480px */
+@media (max-width: 480px) {
+    .contact-cta-buttons {
+        gap: 0.75rem;               /* Slightly smaller gap for tight screens */
+        margin-top: 1rem;           /* Reduce top margin */
+    }
+
+    .contact-cta-buttons .cta-button {
+        max-width: 200px;           /* Limit button width on small devices */
+        padding: 0.75rem 1rem;      /* Adjust padding for better touch target */
+        font-size: 0.9rem;          /* Slightly smaller font size for readability */
+    }
+}

@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>Make Enquiry - MeatMasters Butchery</title> 
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@700&family=Open+Sans&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="icon" href="../Assets/images/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+    <!-- ============== Header ============== -->
+    <header>
+        <div class="container">
+            <div class="logo">
+                <img src="../Assets/meatmasters logo hero.png" alt="MeatMasters Butchery Logo">
+                <h1>Where Flavor Meets Perfection</h1>
+            </div>
+
+            <!-- Mobile hamburger menu -->
+            <input type="checkbox" id="nav-toggle" class="nav-toggle" />
+            <label for="nav-toggle" class="nav-toggle-label" aria-label="Toggle navigation menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </label>
+
+            <!-- Navigation -->
+            <nav aria-label="Main Navigation">
+                <ul>
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="products.html">Products</a></li>
+                    <li><a href="enquiry.html" class="active">Enquire</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ============== Main Content ============== -->
+    <main>
+        <!-- Hero section -->
+        <section class="enquiry-hero">
+            <h2>Make an Enquiry</h2>
+        </section>
+
+        <!-- Enquiry form -->
+        <section class="enquiry-form">
+            <div class="enquiry-form-container">
+                <h3>Request a Quote or Place an Order</h3>
+                <p>Fill out the form below and we'll get back to you within
+                     1 working day with pricing and availability.</p>
+
+                <!-- Main enquiry form -->
+                <form id="enquiryForm" aria-label="Enquiry Form">
+
+                        <!-- Customer details -->
+                        <legend>Your Details</legend>
+                        <div class="form-group">
+                            <label for="customerName">Full Name *</label>
+                            <input type="text" id="customerName" name="customerName" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="customerEmail">Email Address *</label>
+                            <input type="email" id="customerEmail" name="customerEmail" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="customerPhone">Phone Number *</label>
+                            <input type="tel" id="customerPhone" name="customerPhone" required>
+                        </div>
+
+                        <!-- Order details -->
+                        <legend>Order Details</legend>
+                        <div class="form-group">
+                            <label for="enquiryType">Enquiry Type *</label>
+                            <select id="enquiryType" name="enquiryType" required>
+                                <option value="">Select enquiry type</option>
+                                <option value="quote">Request Quote</option>
+                                <option value="order">Place Order</option>
+                                <option value="bulk">Bulk Order</option>
+                                <option value="wholesale">Wholesale Inquiry</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="productInterest">Products of Interest</label>
+                            <select id="productInterest" name="productInterest">
+                                <option value="">Select product</option>
+                                <option value="beef">Beef</option>
+                                <option value="chicken">Chicken</option>
+                                <option value="lamb">Lamb</option>
+                                <option value="pork">Pork</option>
+                                <option value="goat">Goat</option>
+                                <option value="mixed">Mixed Selection</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="quantity">Quantity (kg)</label>
+                            <input type="number" id="quantity" name="quantity" min="0.5" step="0.5" placeholder="e.g., 2.5">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="delivery">Delivery Required?</label>
+                            <select id="delivery" name="delivery">
+                                <option value="no">No, I'll collect</option>
+                                <option value="yes">Yes, please deliver</option>
+                            </select>
+                        </div>
+
+                        <!-- Additional notes -->
+                        <legend>Additional Information</legend>
+                        <div class="form-group">
+                            <label for="message">Additional Details</label>
+                            <textarea id="message" name="message" rows="4" placeholder="Please provide any specific requirements, preferred cuts, or special instructions..."></textarea>
+                        </div>
+
+                    <!-- Submit button -->
+                    <button type="submit" class="cta-button">Send Enquiry</button>
+                </form>
+            </div>
+        </section>
+
+        <!-- Process explanation -->
+        <section class="enquiry-info">
+            <div class="process-info">
+                <h3>What Happens Next?</h3>
+                <ol>
+                    <li>We receive your enquiry within minutes</li>
+                    <li>Our team reviews your requirements</li>
+                    <li>We contact you within 1 working day with pricing and availability</li>
+                    <li>Once confirmed, we prepare your order fresh</li>
+                    <li>Delivery or collection arranged at your convenience</li>
+                </ol>
+            </div>
+        </section>
+    </main>
+
+    <!-- ============== Footer ============== -->
+    <footer>
+        <div class="footer-grid">
+            <!-- contact info -->
+            <section>
+                <h3>MeatMasters Butchery</h3>
+                <p>Premium quality meats since 2017</p>
+                <address>
+                    The Greenery, 54 Oost St, Polokwane Ext 4 Polokwane, 0700 South Africa<br>
+                    Phone: 012 345 6789<br>
+                    Email: <a href="mailto:info@meatmasters.co.za">info@meatmasters.co.za</a>
+                </address>
+
+                <!-- Social links -->
+                <h3>Follow Us On</h3>
+                <div class="social-icons">
+                    <a href="https://facebook.com" target="_blank" class="facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://wa.me/1234567890" target="_blank" class="whatsapp"><i class="fab fa-whatsapp"></i></a>
+                    <a href="https://tiktok.com" target="_blank" class="tiktok"><i class="fab fa-tiktok"></i></a>
+                    <a href="https://instagram.com" target="_blank" class="instagram"><i class="fab fa-instagram"></i></a>
+                </div>
+            </section>
+
+            <!-- Quick navigation -->
+            <nav aria-label="Footer Quick Links">
+                <h3>Quick Links</h3>
+                <ul class="footer-ul">
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="products.html">Products</a></li>
+                    <li><a href="enquiry.html">Enquire</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+
+            <!-- Business hours -->
+            <section>
+                <h3>Hours</h3>
+                <p>Monday - Friday: 8am - 6pm</p>
+                <p>Saturday: 8am - 4pm</p>
+                <p>Sunday: 9am - 2pm</p>
+            </section>
+        </div>
+
+        <!-- Footer bottom -->
+        <div class="footer-bottom">
+            <p>&copy; 2024 MeatMasters Butchery. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>

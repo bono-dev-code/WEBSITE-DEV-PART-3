@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"> 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+  <title>Contact Us - MeatMasters Butchery</title> 
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@700&family=Open+Sans&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="icon" href="../Assets/images/favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+  <!-- ============== Header ============== -->
+  <header>
+    <div class="container">
+      <div class="logo">
+        <img src="../Assets/meatmasters logo hero.png" alt="MeatMasters Butchery Logo">
+        <h1>Where Flavor Meets Perfection</h1>
+      </div>
+
+      <!-- Mobile hamburger menu -->
+      <input type="checkbox" id="nav-toggle" class="nav-toggle" />
+      <label for="nav-toggle" class="nav-toggle-label" aria-label="Toggle navigation menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </label>
+
+      <!-- Navigation -->
+      <nav aria-label="Main Navigation">
+        <ul>
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="products.html">Products</a></li>
+          <li><a href="enquiry.html">Enquire</a></li>
+          <li><a href="contact.html" class="active">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ============== Main Content ============== -->
+  <main>
+    <!-- Hero section -->
+    <section class="contact-hero">
+      <h2>Get In Touch</h2>
+    </section>
+
+    <!-- Contact info + form -->
+    <section class="contact-info">
+      <div class="contact-grid">
+
+        <!-- Contact details -->
+        <article>
+          <h3>Contact Information</h3>
+          <address>
+            <p><strong>Address:</strong><br>
+            The Greenery<br>
+            54 Oost St<br>
+            Polokwane Ext 4<br>
+            Polokwane, 0700<br>
+            South Africa</p>
+          </address>
+
+          <p><strong>Phone:</strong><br>
+            <a href="tel:+27123456789">012 345 6789</a></p>
+
+          <p><strong>Email:</strong><br>
+            <a href="mailto:info@meatmasters.co.za">info@meatmasters.co.za</a></p>
+
+          <p><strong>Business Hours:</strong><br>
+            Monday - Friday: 8am - 6pm<br>
+            Saturday: 8am - 4pm<br>
+            Sunday: 9am - 2pm</p>
+        </article>
+
+        <!-- Contact form -->
+        <article>
+          <h3>Send Us a Message</h3>
+          <form id="contactForm">
+            <div class="form-group">
+              <label for="name">Full Name</label>
+              <input type="text" id="name" name="name" required>
+            </div>
+
+            <div class="form-group">
+              <label for="email">Email Address</label>
+              <input type="email" id="email" name="email" required>
+            </div>
+
+            <div class="form-group">
+              <label for="phone">Phone Number</label>
+              <input type="tel" id="phone" name="phone">
+            </div>
+
+            <div class="form-group">
+              <label for="message">Message</label>
+              <textarea id="message" name="message" rows="5" required></textarea>
+            </div>
+
+            <!-- Submit button -->
+            <button type="submit" class="cta-button">Send Message</button>
+          </form>
+        </article>
+      </div>
+    </section>
+
+    <!-- Google Maps embed -->
+    <section class="map-section">
+      <h3>Find Us</h3>
+      <div class="map-container">
+        <p>We're located at The Greenery in Polokwane Ext 4, easily accessible from all major routes.</p>
+        <div class="map-iframe-container">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3647.5170050216666!2d29.46783507534072!3d-23.906739978564065!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1ec6d969202f0bd5%3A0xd62cf355fe0e3ccd!2sThe%20Greenery!5e0!3m2!1sen!2sza!4v1755631360043!5m2!1sen!2sza"
+            width="100%"
+            height="450"
+            style="border:0;"
+            allowfullscreen
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade">
+          </iframe>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============== Footer ============== -->
+  <footer>
+    <div class="footer-grid">
+      <!-- contact info -->
+      <section>
+        <h3>MeatMasters Butchery</h3>
+        <p>Premium quality meats since 2017</p>
+        <address>
+          The Greenery, 54 Oost St, Polokwane Ext 4 Polokwane, 0700 South Africa<br>
+          Phone: 012 345 6789<br>
+          Email: <a href="mailto:info@meatmasters.co.za">info@meatmasters.co.za</a>
+        </address>
+
+        <!-- Social links -->
+        <h3>Follow Us On</h3>
+        <div class="social-icons">
+          <a href="https://facebook.com" target="_blank" class="facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="https://wa.me/1234567890" target="_blank" class="whatsapp"><i class="fab fa-whatsapp"></i></a>
+          <a href="https://tiktok.com" target="_blank" class="tiktok"><i class="fab fa-tiktok"></i></a>
+          <a href="https://instagram.com" target="_blank" class="instagram"><i class="fab fa-instagram"></i></a>
+        </div>
+      </section>
+
+      <!-- Quick navigation -->
+      <nav aria-label="Footer Quick Links">
+        <h3>Quick Links</h3>
+        <ul class="footer-ul">
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="products.html">Products</a></li>
+          <li><a href="enquiry.html">Enquire</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+
+      <!-- Business hours -->
+      <section>
+        <h3>Hours</h3>
+        <p>Monday - Friday: 8am - 6pm</p>
+        <p>Saturday: 8am - 4pm</p>
+        <p>Sunday: 9am - 2pm</p>
+      </section>
+    </div>
+
+    <!-- Footer bottom -->
+    <div class="footer-bottom">
+      <p>&copy; 2024 MeatMasters Butchery. All rights reserved.</p>
+    </div>
+  </footer>
+</body>
+</html>

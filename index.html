@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>MeatMasters Butchery - Premium Quality Meats</title> 
+    <meta name="description" content="MeatMasters Butchery offers premium quality meats including beef, chicken, lamb, pork, and goat. Ethically sourced, expertly cut meats delivered to your door.">
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@700&family=Open+Sans&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" href="Assets/images/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+    <!-- ================= Header ================= -->
+    <header>
+        <div class="container">
+            <div class="logo">
+                <img src="./Assets/meatmasters logo hero.png" alt="MeatMasters Butchery Logo">
+                <h1>Where Flavor Meets Perfection</h1>
+            </div>
+
+            <!-- Hamburger menu toggle for mobile -->
+            <input type="checkbox" id="nav-toggle" class="nav-toggle" />
+
+            <!-- Label that acts as the hamburger button -->
+            <label for="nav-toggle" class="nav-toggle-label" aria-label="Toggle navigation menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </label>
+
+            <!-- Main navigation menu -->
+            <nav aria-label="Main Navigation">
+                <ul>
+                    <li><a href="index.html" class="active">Home</a></li>
+                    <li><a href="Pages/about.html">About Us</a></li>
+                    <li><a href="Pages/products.html">Products</a></li>
+                    <li><a href="Pages/enquiry.html">Enquire</a></li>
+                    <li><a href="Pages/contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ================= Hero Section with Slideshow ================= -->
+    <section class="hero" aria-label="Promotional Slideshow">
+        <div class="slideshow-container">
+            <!-- Hidden radio buttons to control slides -->
+            <input type="radio" name="slides" id="slide1" checked>
+            <input type="radio" name="slides" id="slide2">
+            <input type="radio" name="slides" id="slide3">
+            <input type="radio" name="slides" id="slide4">
+            <input type="radio" name="slides" id="slide5">
+            <input type="radio" name="slides" id="slide6">
+
+            <!-- All slides -->
+            <div class="slides">
+                <!-- Slide 1 -->
+                <article class="slide">
+                    <img src="./Assets/meat.jpg" alt="MeatMasters Butchery">
+                    <div class="slide-content">
+                        <h2>Welcome to MeatMasters Butchery</h2>
+                        <p>Premium quality meats, expertly cut and ethically sourced. 
+                            From our family to yours since 2017.</p>
+                        <a href="Pages/products.html" class="cta-button">Shop Our Products</a>
+                    </div>
+                </article>
+
+                <!-- Slide 2 -->
+                <article class="slide">
+                    <img src="./Assets/BEEF/1 beef cuts.jpg" alt="Premium Beef">
+                    <div class="slide-content">
+                        <h2>Premium Grass-Fed Beef</h2>
+                        <p>Discover our selection of premium grass-fed beef cuts, perfect for any occasion.</p>
+                        <a href="Pages/products.html" class="cta-button">Explore Beef</a>
+                    </div>
+                </article>
+
+                <!-- Slide 3 -->
+                <article class="slide">
+                    <img src="./Assets/CHICKEN/1 chicken cuts.jpeg" alt="Fresh Chicken">
+                    <div class="slide-content">
+                        <h2>Free-Range Chicken</h2>
+                        <p>Tender, hormone-free chicken raised with care for the best flavor and quality.</p>
+                        <a href="Pages/products.html" class="cta-button">View Chicken</a>
+                    </div>
+                </article>
+
+                <!-- Slide 4 -->
+                <article class="slide">
+                    <img src="./Assets/LAMB/1. lamb cuts.jpeg" alt="Quality Lamb">
+                    <div class="slide-content">
+                        <h2>Fresh Local Lamb</h2>
+                        <p>Locally sourced premium lamb, expertly prepared by our master butchers.</p>
+                        <a href="Pages/products.html" class="cta-button">Discover Lamb</a>
+                    </div>
+                </article>
+
+                <!-- Slide 5 -->
+                <article class="slide">
+                    <img src="./Assets/PORK/1 pork cuts...jpeg" alt="Premium Pork">
+                    <div class="slide-content">
+                        <h2>Quality Pork Cuts</h2>
+                        <p>From succulent pork belly to tender loin, we have all your pork needs covered.</p>
+                        <a href="Pages/products.html" class="cta-button">Shop Pork</a>
+                    </div>
+                </article>
+
+                <!-- Slide 6 -->
+                <article class="slide">
+                    <img src="./Assets/GOAT/goat leg.jpg" alt="Fresh Goat">
+                    <div class="slide-content">
+                        <h2>Fresh Goat Meat</h2>
+                        <p>Traditional goat cuts perfect for curries, stews, and special occasions.</p>
+                        <a href="Pages/products.html" class="cta-button">Explore Goat</a>
+                    </div>
+                </article>
+            </div>
+
+            <!-- Navigation dots clickable labels linked to radio buttons -->
+            <div class="dot-container" role="tablist" aria-label="Slideshow navigation">
+                <label for="slide1" class="dot"></label>
+                <label for="slide2" class="dot"></label>
+                <label for="slide3" class="dot"></label>
+                <label for="slide4" class="dot"></label>
+                <label for="slide5" class="dot"></label>
+                <label for="slide6" class="dot"></label>
+            </div>
+
+            <!-- Previous and Next controls for each slide -->
+            <div class="nav-buttons slide1">
+                <label for="slide6" class="prev">&#10094;</label>
+                <label for="slide2" class="next">&#10095;</label>
+            </div>
+            <div class="nav-buttons slide2">
+                <label for="slide1" class="prev">&#10094;</label>
+                <label for="slide3" class="next">&#10095;</label>
+            </div>
+            <div class="nav-buttons slide3">
+                <label for="slide2" class="prev">&#10094;</label>
+                <label for="slide4" class="next">&#10095;</label>
+            </div>
+            <div class="nav-buttons slide4">
+                <label for="slide3" class="prev">&#10094;</label>
+                <label for="slide5" class="next">&#10095;</label>
+            </div>
+            <div class="nav-buttons slide5">
+                <label for="slide4" class="prev">&#10094;</label>
+                <label for="slide6" class="next">&#10095;</label>
+            </div>
+            <div class="nav-buttons slide6">
+                <label for="slide5" class="prev">&#10094;</label>
+                <label for="slide1" class="next">&#10095;</label>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= Main Content ================= -->
+    <main>
+        <!-- Featured Products Section -->
+        <section class="featured-products">
+            <h2>Featured Products</h2>
+            <div class="products-grid">
+                <!-- Product 1 -->
+                <article class="product-item">
+                    <img src="./Assets/BEEF/3 raw fillet.jpg" alt="Premium Grass-Fed Beef">
+                    <h3>Grass-Fed Beef</h3>
+                    <p>Premium cuts from grass-fed cattle</p>
+                    <p class="price">From R89.99/kg</p>
+                </article>
+
+                <!-- Product 2 -->
+                <article class="product-item">
+                    <img src="./Assets/CHICKEN/2 chicken.jpeg" alt="Free-Range Chicken">
+                    <h3>Free-Range Chicken</h3>
+                    <p>Tender, hormone-free chicken</p>
+                    <p class="price">From R59.99/kg</p>
+                </article>
+
+                <!-- Product 3 -->
+                <article class="product-item">
+                    <img src="./Assets/LAMB/2 lamb.jpeg" alt="Fresh Local Lamb">
+                    <h3>Fresh Lamb</h3>
+                    <p>Locally sourced, premium lamb</p>
+                    <p class="price">From R129.99/kg</p>
+                </article>
+
+                <!-- Product 4 -->
+                <article class="product-item">
+                    <img src="./Assets/PORK/2 pork.jpeg" alt="Quality Pork Cuts">
+                    <h3>Quality Pork</h3>
+                    <p>Fresh pork cuts for every occasion</p>
+                    <p class="price">From R79.99/kg</p>
+                </article>
+            </div>
+
+            <!-- Link to full products page -->
+            <div class="text-center mt-2">
+                <a href="Pages/products.html" class="cta-button">View All Products</a>
+            </div>
+        </section>
+
+        <!-- About Us Section Preview -->
+        <section class="about-preview">
+            <h2>Our Story</h2>
+            <div class="grid-two-columns-gap">
+                <div>
+                    <p>Founded in 2017, MeatMasters Butchery started as a modest family-run business in Limpopo.
+                         Today, we're proud to offer premium,
+                          ethically sourced meats to homes and businesses across South Africa.</p>
+                    <p>Our commitment to quality, traditional craftsmanship,
+                         and customer satisfaction has made us the trusted choice for premium meats.</p>
+                    <a href="Pages/about.html" class="cta-button">Learn More About Us</a>
+                </div>
+                <figure>
+                    <img src="./Assets/meatmasters logo hero.png" alt="MeatMasters Butchery" class="img-70-rounded">
+                </figure>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section class="services">
+            <h2>Our Services</h2>
+            <div class="services-grid">
+                <article class="text-center-padding">
+                    <h3>🥩 Premium Cuts</h3>
+                    <p>Expertly cut meats by master butchers</p>
+                </article>
+                <article class="text-center-padding">
+                    <h3>🚚 Home Delivery</h3>
+                    <p>Fresh meats delivered to your door</p>
+                </article>
+                <article class="text-center-padding">
+                    <h3>🏪 Wholesale</h3>
+                    <p>Bulk orders for restaurants & businesses</p>
+                </article>
+                <article class="text-center-padding">
+                    <h3>📞 Expert Advice</h3>
+                    <p>Personalized recommendations</p>
+                </article>
+            </div>
+        </section>
+
+        <!-- Contact Call to Action -->
+        <aside class="contact-cta">
+            <h2 class="color-aliceblue">Ready to Order?</h2>
+            <p>Get in touch with us today for the freshest meats in town!</p>
+            <div class="contact-cta-buttons">
+                <a href="Pages/contact.html" class="cta-button margin-horizontal-1rem">Contact Us</a>
+                <a href="Pages/enquiry.html" class="cta-button margin-horizontal-1rem">Make Enquiry</a>
+            </div>
+        </aside>
+    </main>
+
+    <!-- ================= Footer ================= -->
+    <footer>
+        <div class="footer-grid">
+            <!-- Business Info -->
+            <section>
+                <h3>MeatMasters Butchery</h3>
+                <p>Premium quality meats since 2017</p>
+                <address>
+                    The Greenery, 54 Oost St, Polokwane Ext 4 Polokwane, 0700 South Africa<br>
+                    Phone: 012 345 6789<br>
+                    Email: <a href="mailto:info@meatmasters.co.za">info@meatmasters.co.za</a>
+                </address>
+
+                <!-- Social Media Links -->
+                <h3>Follow Us On</h3>
+                <div class="social-icons">
+                    <a href="https://facebook.com" target="_blank" class="facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://wa.me/1234567890" target="_blank" class="whatsapp"><i class="fab fa-whatsapp"></i></a>
+                    <a href="https://tiktok.com" target="_blank" class="tiktok"><i class="fab fa-tiktok"></i></a>
+                    <a href="https://instagram.com" target="_blank" class="instagram"><i class="fab fa-instagram"></i></a>
+                </div>
+            </section>
+
+            <!-- Quick Links Navigation -->
+            <nav aria-label="Footer Quick Links">
+                <h3>Quick Links</h3>
+                <ul class="footer-ul">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="Pages/about.html">About Us</a></li>
+                    <li><a href="Pages/products.html">Products</a></li>
+                    <li><a href="Pages/contact.html">Contact</a></li>
+                </ul>
+            </nav>
+
+            <!-- Operating Hours -->
+            <section>
+                <h3>Hours</h3>
+                <p>Monday - Friday: 8am - 6pm</p>
+                <p>Saturday: 8am - 4pm</p>
+                <p>Sunday: 9am - 2pm</p>
+            </section>
+        </div>
+
+        <!-- Footer Bottom -->
+        <div class="footer-bottom">
+            <p>&copy; 2024 MeatMasters Butchery. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
