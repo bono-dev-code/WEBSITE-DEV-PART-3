@@ -976,14 +976,17 @@ footer a:hover {
         overflow: hidden; /* Hide overflow */
         margin: 0 auto; /* Center the container */
         box-shadow: var(--shadow); /* Subtle shadow */
+        height: 350px !important; /* Responsive height for mobile */
     }
 
     .map-iframe-container iframe {
         width: 100% !important; /* Force full width */
-        height: 300px !important; /* Fixed height for mobile */
+        height: 100% !important; /* Fill container height */
         max-width: 100% !important; /* Prevent horizontal overflow */
         border: none !important; /* Remove border */
-        display: block; /* Ensure proper display */
+        position: absolute !important; /* Fill container completely */
+        top: 0 !important;
+        left: 0 !important;
     }
 
     /* Contact form mobile improvements */
@@ -1551,6 +1554,17 @@ input:focus, textarea:focus, select:focus {
     overflow: hidden; /* Hides overflow */
     margin-top: 0.625em; /* Space above */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    height: 500px; /* Responsive height for desktop */
+    position: relative; /* Positioning context for iframe */
+}
+
+.map-iframe-container iframe {
+    width: 100%; /* Full width of container */
+    height: 100%; /* Full height of container */
+    border: none; /* Remove default border */
+    position: absolute; /* Fill container completely */
+    top: 0;
+    left: 0;
 }
 
 .services-grid {
