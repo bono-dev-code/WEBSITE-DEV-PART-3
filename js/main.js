@@ -310,6 +310,12 @@ class ProductFilter {
         this.searchInput.addEventListener('input', () => this.filterBySearch());
         this.checkUrlHash();
         this.applyFilters();
+        // Add fade-in animation to all visible products on page load
+        this.productItems.forEach(item => {
+            if (item.style.display !== 'none') {
+                item.classList.add('fade-in');
+            }
+        });
     }
 
     filterByCategory(button) {
@@ -338,6 +344,7 @@ class ProductFilter {
     }
 
     applyFilters() {
+        let visibleIndex = 0;
         this.productItems.forEach(item => {
             const category = item.dataset.category;
             const name = item.querySelector('h3').textContent.toLowerCase();
@@ -345,9 +352,27 @@ class ProductFilter {
             const categoryMatch = this.currentCategory === 'all' || category === this.currentCategory;
             const searchMatch = this.searchTerm === '' || name.includes(this.searchTerm) || description.includes(this.searchTerm);
             if (categoryMatch && searchMatch) {
-                item.style.display = 'block';
+                // Item should be visible
+                if (item.style.display === 'none') {
+                    item.style.display = 'block';
+                    item.classList.remove('fade-out');
+                    item.classList.add('fade-in');
+                } else {
+                    item.classList.remove('fade-out');
+                    item.classList.add('fade-in');
+                }
+                // Apply staggered animation delay based on visible position
+                const delay = visibleIndex * 0.05; // 0.05s delay between each item
+                item.style.animationDelay = `${delay}s`;
+                visibleIndex++;
             } else {
-                item.style.display = 'none';
+                // Item should be hidden
+                item.classList.remove('fade-in');
+                item.classList.add('fade-out');
+                // Delay hiding to allow fade-out animation
+                setTimeout(() => {
+                    item.style.display = 'none';
+                }, 400); // Match the transition duration
             }
         });
     }
