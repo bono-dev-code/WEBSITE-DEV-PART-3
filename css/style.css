@@ -702,16 +702,17 @@ h2::after {
 }
 
 .team-member img {
-    width: 180px; /* Fixed width */
-    height: 180px; /* Fixed height */
-    border-radius: 50%; /* Circular image */
-    object-fit: cover; /* Crops image to fill circle */
+    width: 100%; /* Full width of container */
+    height: 250px; /* Fixed height to match product images */
+    border-radius: 10px; /* Rounded corners to match product cards */
+    object-fit: cover; /* Scales and crops images uniformly */
     border: 5px solid transparent; /* Transparent border for gradient effect */
     background: linear-gradient(45deg, var(--primary-color), var(--secondary-color)) padding-box, /* Gradient fill */
                 linear-gradient(45deg, var(--accent-color), var(--primary-color)) border-box; /* Gradient border */
     margin-bottom: 1.5rem; /* Space below image */
     transition: all 0.3s ease; /* Smooth transitions */
     position: relative; /* Positioning context */
+    cursor: pointer; /* Indicates image is interactive */
 }
 
 .team-member:hover img {

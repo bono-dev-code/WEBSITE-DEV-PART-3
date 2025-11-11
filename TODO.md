@@ -1,5 +1,6 @@
-# TODO List for Homepage Slideshow Button Links
+# TODO: Add Lightbox to Meet the Team Section
 
-- [x] Update index.html: Change CTA button hrefs in slideshow to include category hashes (e.g., #beef, #chicken, #lamb, #pork, #goat)
-- [x] Update js/main.js: Add logic in ProductFilter.init() to check window.location.hash on page load and filter to the matching category if present
-- [x] Test the implementation: Open homepage, click slideshow buttons, verify products page loads with correct category filtered
+## Tasks
+- [x] Add lightbox trigger classes to team member images in Pages/about.html
+- [x] Update CSS for team member images to match product image sizes (250px height, object-fit: cover)
+- [ ] Test lightbox functionality on the about page
