@@ -187,8 +187,10 @@ class MobileMenu {
 class DateTimeUpdater {
     constructor() {
         this.dateTimeElements = document.querySelectorAll('.currentDateTime');
-        if (this.dateTimeElements.length > 0) {
+        this.yearElements = document.querySelectorAll('.currentYear');
+        if (this.dateTimeElements.length > 0 || this.yearElements.length > 0) {
             this.updateDateTime();
+            this.updateYear();
             setInterval(() => this.updateDateTime(), 1000);
         }
     }
@@ -206,6 +208,11 @@ class DateTimeUpdater {
         };
         const dateTimeString = now.toLocaleString('en-ZA', options);
         this.dateTimeElements.forEach(el => el.textContent = dateTimeString);
+    }
+
+    updateYear() {
+        const currentYear = new Date().getFullYear();
+        this.yearElements.forEach(el => el.textContent = currentYear);
     }
 }
 
