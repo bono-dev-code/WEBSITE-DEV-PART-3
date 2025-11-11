@@ -1348,7 +1348,8 @@ footer a:hover {
     
     /* Product image adjustments */
     .product-item img {
-        aspect-ratio: 1/1; /* Square aspect ratio */
+        height: 250px; /* Maintain uniform height */
+        object-fit: cover; /* Scale and crop images uniformly */
     }
     
     /* Filter button adjustments */

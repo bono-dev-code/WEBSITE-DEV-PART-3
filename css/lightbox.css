@@ -28,8 +28,8 @@
 /* Lightbox Container */
 .lightbox-container {
     position: relative;
-    max-width: 90vw;
-    max-height: 90vh;
+    width: 100vw;
+    height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -186,8 +186,8 @@
 /* Responsive Design for Lightbox */
 @media (max-width: 768px) {
     .lightbox-container {
-        max-width: 95vw;
-        max-height: 95vh;
+        width: 100vw;
+        height: 100vh;
     }
 
     .lightbox-nav {
