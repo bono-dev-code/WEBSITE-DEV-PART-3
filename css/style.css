@@ -601,8 +601,7 @@ h2::after {
 .product-item img {
     width: 100%; /* Full width of container */
     height: auto; /* Maintains aspect ratio */
-    aspect-ratio: 4/3; /* Consistent proportion for all images */
-    object-fit: cover; /* Crops images to fill space */
+    object-fit: contain; /* Shows full image without cropping */
     cursor: pointer; /* Indicates image is interactive */
 }
 
