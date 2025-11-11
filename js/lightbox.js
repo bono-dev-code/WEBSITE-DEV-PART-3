@@ -50,12 +50,10 @@ class LightboxGallery {
             }
         });
 
-        // Lightbox navigation - only close on close button click
+        // Lightbox navigation - close on any click (overlay or image)
         if (this.overlay) {
             this.overlay.addEventListener('click', (e) => {
-                if (e.target.classList.contains('lightbox-close')) {
-                    this.closeLightbox();
-                }
+                this.closeLightbox();
             });
         }
 
