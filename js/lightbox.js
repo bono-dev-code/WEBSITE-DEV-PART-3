@@ -50,15 +50,11 @@ class LightboxGallery {
             }
         });
 
-        // Lightbox navigation
+        // Lightbox navigation - only close on close button click
         if (this.overlay) {
             this.overlay.addEventListener('click', (e) => {
-                if (e.target === this.overlay || e.target.classList.contains('lightbox-close')) {
+                if (e.target.classList.contains('lightbox-close')) {
                     this.closeLightbox();
-                } else if (e.target.classList.contains('lightbox-prev')) {
-                    this.showPrevious();
-                } else if (e.target.classList.contains('lightbox-next')) {
-                    this.showNext();
                 }
             });
         }
