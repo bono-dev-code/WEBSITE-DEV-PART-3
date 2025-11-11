@@ -238,6 +238,9 @@ class ProductFilter {
 
         this.searchInput.addEventListener('input', () => this.filterBySearch());
 
+        // Check for hash in URL and filter accordingly
+        this.checkUrlHash();
+
         // Initial filter
         this.applyFilters();
     }
@@ -257,6 +260,21 @@ class ProductFilter {
     filterBySearch() {
         this.searchTerm = this.searchInput.value.toLowerCase().trim();
         this.applyFilters();
+    }
+
+    checkUrlHash() {
+        const hash = window.location.hash.substring(1); // Remove the '#'
+        const validCategories = ['beef', 'chicken', 'lamb', 'pork', 'goat'];
+
+        if (validCategories.includes(hash)) {
+            this.currentCategory = hash;
+            // Find and activate the corresponding button
+            const targetButton = Array.from(this.filterButtons).find(btn => btn.dataset.category === hash);
+            if (targetButton) {
+                this.filterButtons.forEach(btn => btn.classList.remove('active'));
+                targetButton.classList.add('active');
+            }
+        }
     }
 
     applyFilters() {
