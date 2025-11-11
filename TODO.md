@@ -1,8 +1,14 @@
-# TODO: Update Copyright Year to Current Year
+# TODO List for Removing Newsletter Forms
 
-- [ ] Edit index.html: Replace "© 2024" with "© <span class="currentYear"></span>" in footer-bottom
-- [ ] Edit Pages/about.html: Replace "© 2024" with "© <span class="currentYear"></span>" in footer-bottom
-- [ ] Edit Pages/contact.html: Replace "© 2024" with "© <span class="currentYear"></span>" in footer-bottom
-- [ ] Edit Pages/enquiry.html: Replace "© 2024" with "© <span class="currentYear"></span>" in footer-bottom
-- [ ] Edit Pages/products.html: Replace "© 2024" with "© <span class="currentYear"></span>" in footer-bottom
-- [ ] Edit js/main.js: Extend DateTimeUpdater to update .currentYear elements with current year
+## Completed Tasks
+- [x] Analyze all HTML files for newsletter forms
+- [x] Plan removal of newsletter forms from footers
+- [x] Remove newsletter form from index.html
+- [x] Remove newsletter form from Pages/about.html
+- [x] Remove newsletter form from Pages/contact.html
+- [x] Remove newsletter form from Pages/enquiry.html
+- [x] Remove newsletter form from Pages/products.html
+
+## Pending Tasks
+- [x] Verify footer rendering on all pages without forms (skipped by user)
+- [x] Test responsive behavior on different screen sizes (skipped by user)
