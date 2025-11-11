@@ -1602,3 +1602,220 @@ input:focus, textarea:focus, select:focus {
         font-size: 0.9rem;          /* Slightly smaller font size for readability */
     }
 }
+
+/* ========================================
+   GALLERY LIGHTBOX STYLES
+   ======================================== */
+
+/* Lightbox Overlay */
+.lightbox-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10000;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(5px);
+}
+
+.lightbox-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Lightbox Container */
+.lightbox-container {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Lightbox Image */
+.lightbox-image {
+    max-width: 80vw;
+    max-height: 80vh;
+    object-fit: contain;
+    border-radius: 8px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s ease;
+}
+
+.lightbox-overlay.active .lightbox-image {
+    animation: lightboxZoomIn 0.3s ease-out;
+}
+
+@keyframes lightboxZoomIn {
+    from {
+        transform: scale(0.8);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* Lightbox Caption */
+.lightbox-caption {
+    position: absolute;
+    bottom: -60px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 12px 20px;
+    border-radius: 25px;
+    font-size: 0.9rem;
+    text-align: center;
+    max-width: 80%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    backdrop-filter: blur(10px);
+}
+
+/* Navigation Buttons - Hidden */
+.lightbox-nav {
+    display: none;
+}
+
+.lightbox-nav:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: translateY(-50%) scale(1.1);
+}
+
+.lightbox-nav.prev {
+    left: 20px;
+}
+
+.lightbox-nav.next {
+    right: 20px;
+}
+
+/* Close Button - Hidden */
+.lightbox-close {
+    display: none;
+}
+
+/* Image Counter - Hidden */
+.lightbox-counter {
+    display: none;
+}
+
+/* Loading Spinner */
+.lightbox-loading {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 40px;
+    height: 40px;
+    border: 4px solid rgba(255, 255, 255, 0.3);
+    border-top: 4px solid white;
+    border-radius: 50%;
+    animation: lightboxSpin 1s linear infinite;
+    z-index: 10002;
+}
+
+@keyframes lightboxSpin {
+    0% { transform: translate(-50%, -50%) rotate(0deg); }
+    100% { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+/* Lightbox Trigger Images */
+.lightbox-trigger {
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.lightbox-trigger:hover {
+    transform: scale(1.02);
+}
+
+/* Responsive Design for Lightbox */
+@media (max-width: 768px) {
+    .lightbox-container {
+        width: 100vw;
+        height: 100vh;
+    }
+
+    .lightbox-nav {
+        width: 40px;
+        height: 40px;
+        font-size: 1.2rem;
+    }
+
+    .lightbox-nav.prev {
+        left: 10px;
+    }
+
+    .lightbox-nav.next {
+        right: 10px;
+    }
+
+    .lightbox-close {
+        top: 10px;
+        right: 10px;
+        width: 35px;
+        height: 35px;
+        font-size: 1rem;
+    }
+
+    .lightbox-counter {
+        top: 10px;
+        left: 10px;
+        font-size: 0.7rem;
+        padding: 6px 10px;
+    }
+
+    .lightbox-caption {
+        bottom: -50px;
+        font-size: 0.8rem;
+        padding: 10px 15px;
+        max-width: 90%;
+    }
+}
+
+@media (max-width: 480px) {
+    .lightbox-nav {
+        display: none; /* Hide navigation buttons on very small screens, use swipe */
+    }
+
+    .lightbox-caption {
+        font-size: 0.75rem;
+        padding: 8px 12px;
+    }
+}
+
+/* Accessibility */
+.lightbox-nav:focus,
+.lightbox-close:focus {
+    outline: 2px solid white;
+    outline-offset: 2px;
+}
+
+/* Animation for lightbox entrance */
+.lightbox-overlay.active .lightbox-container {
+    animation: lightboxFadeIn 0.3s ease-out;
+}
+
+@keyframes lightboxFadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
