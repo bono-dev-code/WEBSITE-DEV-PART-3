@@ -1,13 +1,20 @@
-# TODO: Implement Enquiry and Contact Forms with Validation and Processing
+# TODO: Add Meta Tags to All Pages
 
-## Tasks
-- [ ] Update contact.html: Add "message type" select field with options (general inquiry, complaint, feedback, other)
-- [ ] Update enquiry.html: Add "volunteer" and "sponsor" options to enquiryType select
-- [ ] Enhance js/main.js FormHandler: Add client-side validation for phone numbers (South African format), name length (min 2 chars), quantity (min 0.5 if provided), message length (min 10 chars)
-- [ ] Update enquiryForm processing: After validation, simulate AJAX submission and generate response based on enquiry type, product, quantity (e.g., estimated cost, availability)
-- [ ] Update contactForm processing: After validation, simulate AJAX submission and compile form data into mailto link for email client
-- [ ] Ensure forms use action="#" and handle submission via JS with loading states
-- [ ] Test forms for validation, processing, and email functionality
+## Task Overview
+Add at least 2 additional meta tags to all HTML pages for better SEO and metadata.
 
-## Progress
-- [x] Plan confirmed and TODO created
+## Pages to Update
+- [x] index.html
+- [x] Pages/about.html
+- [x] Pages/products.html
+- [x] Pages/enquiry.html
+- [x] Pages/contact.html
+
+## Meta Tags Added
+- `<meta name="keywords" content="premium meats, beef, chicken, lamb, pork, goat, Polokwane, ethically sourced, fresh cuts">`
+- `<meta name="author" content="MeatMasters Butchery">`
+
+## Plan Completed
+1. Edited each page's `<head>` section to add the new meta tags after existing ones.
+2. Ensured tags are placed appropriately within the head element.
+3. Verified all pages have been updated.
