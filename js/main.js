@@ -103,6 +103,10 @@ class FormHandler {
         let isValid = true;
         const requiredFields = this.form.querySelectorAll('[required]');
         const emailField = this.form.querySelector('input[type="email"]');
+        const phoneField = this.form.querySelector('input[type="tel"]');
+        const nameField = this.form.querySelector('input[name*="name"]');
+        const quantityField = this.form.querySelector('input[name="quantity"]');
+        const messageField = this.form.querySelector('textarea[name="message"]');
 
         // Clear previous errors
         this.clearErrors();
@@ -115,13 +119,43 @@ class FormHandler {
             }
         });
 
+        // Validate name length
+        if (nameField && nameField.value.trim() && nameField.value.trim().length < 2) {
+            this.showError(nameField, 'Name must be at least 2 characters long');
+            isValid = false;
+        }
+
         // Validate email
         if (emailField && emailField.value.trim()) {
             const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
             if (!emailRegex.test(emailField.value)) {
-                this.showError(field, 'Please enter a valid email address');
+                this.showError(emailField, 'Please enter a valid email address');
                 isValid = false;
             }
+        }
+
+        // Validate phone (South African format)
+        if (phoneField && phoneField.value.trim()) {
+            const phoneRegex = /^(\+27|0)[6-8][0-9]{8}$/;
+            if (!phoneRegex.test(phoneField.value)) {
+                this.showError(phoneField, 'Please enter a valid South African phone number (e.g., +27123456789 or 0123456789)');
+                isValid = false;
+            }
+        }
+
+        // Validate quantity (if provided)
+        if (quantityField && quantityField.value.trim()) {
+            const quantity = parseFloat(quantityField.value);
+            if (quantity < 0.5) {
+                this.showError(quantityField, 'Minimum quantity is 0.5 kg');
+                isValid = false;
+            }
+        }
+
+        // Validate message length
+        if (messageField && messageField.value.trim() && messageField.value.trim().length < 10) {
+            this.showError(messageField, 'Message must be at least 10 characters long');
+            isValid = false;
         }
 
         return isValid;
@@ -141,24 +175,162 @@ class FormHandler {
     clearErrors() {
         const errors = this.form.querySelectorAll('.error-message');
         errors.forEach(error => error.remove());
-        const fields = this.form.querySelectorAll('input, textarea');
+        const fields = this.form.querySelectorAll('input, textarea, select');
         fields.forEach(field => field.style.borderColor = '');
     }
 
     submitForm() {
-        // Simulate form submission (since this is a static site)
+        const formId = this.form.id;
+        if (formId === 'enquiryForm') {
+            this.submitEnquiryForm();
+        } else if (formId === 'contactForm') {
+            this.submitContactForm();
+        }
+    }
+
+    submitEnquiryForm() {
+        const submitButton = this.form.querySelector('button[type="submit"]');
+        const originalText = submitButton.textContent;
+        submitButton.textContent = 'Processing...';
+        submitButton.disabled = true;
+
+        // Simulate AJAX submission
+        setTimeout(() => {
+            const formData = new FormData(this.form);
+            const enquiryType = formData.get('enquiryType');
+            const product = formData.get('productInterest') || 'mixed';
+            const quantity = parseFloat(formData.get('quantity')) || 0;
+            const delivery = formData.get('delivery') === 'yes';
+
+            let response = '';
+
+            if (enquiryType === 'volunteer') {
+                response = 'Thank you for your interest in volunteering! We appreciate your willingness to contribute to our community. We will review your application and contact you within 3-5 business days with more details about volunteer opportunities.';
+            } else if (enquiryType === 'sponsor') {
+                response = 'Thank you for considering sponsorship! We value partnerships that help us serve our community better. Our sponsorship coordinator will contact you within 2 business days to discuss opportunities.';
+            } else {
+                // Calculate estimated cost (sample prices per kg)
+                const prices = {
+                    beef: 180,
+                    chicken: 120,
+                    lamb: 220,
+                    pork: 150,
+                    goat: 200,
+                    mixed: 170
+                };
+                const pricePerKg = prices[product] || prices.mixed;
+                const estimatedCost = quantity * pricePerKg;
+                const deliveryFee = delivery ? 50 : 0;
+                const totalCost = estimatedCost + deliveryFee;
+
+                response = `Thank you for your enquiry! Based on your request:\n\n`;
+                response += `Product: ${product.charAt(0).toUpperCase() + product.slice(1)}\n`;
+                response += `Quantity: ${quantity} kg\n`;
+                response += `Estimated Cost: R${estimatedCost.toFixed(2)}\n`;
+                if (delivery) response += `Delivery Fee: R${deliveryFee.toFixed(2)}\n`;
+                response += `Total Estimated Cost: R${totalCost.toFixed(2)}\n\n`;
+                response += `Availability: In stock (subject to confirmation)\n\n`;
+                response += `We will contact you within 1 business day to confirm details and arrange your order.`;
+            }
+
+            // Show response in a modal-like div
+            this.showResponseModal(response);
+            submitButton.textContent = originalText;
+            submitButton.disabled = false;
+        }, 2000);
+    }
+
+    submitContactForm() {
         const submitButton = this.form.querySelector('button[type="submit"]');
         const originalText = submitButton.textContent;
         submitButton.textContent = 'Sending...';
         submitButton.disabled = true;
 
-        // Simulate API call delay
+        // Simulate AJAX submission
         setTimeout(() => {
-            alert('Thank you for your message! We will get back to you soon.');
+            const formData = new FormData(this.form);
+            const name = formData.get('name');
+            const email = formData.get('email');
+            const phone = formData.get('phone');
+            const messageType = formData.get('messageType');
+            const message = formData.get('message');
+
+            // Compile into email
+            const subject = `MeatMasters Contact: ${messageType.charAt(0).toUpperCase() + messageType.slice(1)}`;
+            const body = `Name: ${name}\nEmail: ${email}\nPhone: ${phone}\nMessage Type: ${messageType}\n\nMessage:\n${message}`;
+
+            const mailtoLink = `mailto:info@meatmasters.co.za?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
+            // Open email client
+            window.location.href = mailtoLink;
+
+            alert('Your email client has been opened with your message. Please send the email to complete your submission.');
             this.form.reset();
             submitButton.textContent = originalText;
             submitButton.disabled = false;
-        }, 2000);
+        }, 1500);
+    }
+
+    showResponseModal(response) {
+        // Create modal overlay
+        const modal = document.createElement('div');
+        modal.style.cssText = `
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.7);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        `;
+
+        const modalContent = document.createElement('div');
+        modalContent.style.cssText = `
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            max-width: 500px;
+            max-height: 80vh;
+            overflow-y: auto;
+            text-align: left;
+        `;
+
+        const closeButton = document.createElement('button');
+        closeButton.textContent = '×';
+        closeButton.style.cssText = `
+            float: right;
+            font-size: 1.5rem;
+            background: none;
+            border: none;
+            cursor: pointer;
+        `;
+        closeButton.onclick = () => modal.remove();
+
+        const title = document.createElement('h3');
+        title.textContent = 'Enquiry Response';
+        title.style.marginTop = '0';
+
+        const responseText = document.createElement('pre');
+        responseText.textContent = response;
+        responseText.style.cssText = `
+            white-space: pre-wrap;
+            font-family: inherit;
+            margin: 1rem 0;
+        `;
+
+        modalContent.appendChild(closeButton);
+        modalContent.appendChild(title);
+        modalContent.appendChild(responseText);
+        modal.appendChild(modalContent);
+        document.body.appendChild(modal);
+
+        // Close on outside click
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) modal.remove();
+        });
     }
 }
 
@@ -473,9 +645,12 @@ document.addEventListener('DOMContentLoaded', () => {
         new SlideshowController();
     }
 
-    // Initialize form handler if contact form exists
+    // Initialize form handlers
     if (document.getElementById('contactForm')) {
         new FormHandler('contactForm');
+    }
+    if (document.getElementById('enquiryForm')) {
+        new FormHandler('enquiryForm');
     }
 
     // Initialize product filter if on products page
