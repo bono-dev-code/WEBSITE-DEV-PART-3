@@ -186,8 +186,8 @@ class MobileMenu {
 // ================= REAL-TIME DATE AND TIME =================
 class DateTimeUpdater {
     constructor() {
-        this.dateTimeElement = document.getElementById('currentDateTime');
-        if (this.dateTimeElement) {
+        this.dateTimeElements = document.querySelectorAll('.currentDateTime');
+        if (this.dateTimeElements.length > 0) {
             this.updateDateTime();
             setInterval(() => this.updateDateTime(), 1000);
         }
@@ -204,7 +204,8 @@ class DateTimeUpdater {
             second: '2-digit',
             timeZoneName: 'short'
         };
-        this.dateTimeElement.textContent = now.toLocaleString('en-ZA', options);
+        const dateTimeString = now.toLocaleString('en-ZA', options);
+        this.dateTimeElements.forEach(el => el.textContent = dateTimeString);
     }
 }
 
