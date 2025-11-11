@@ -300,6 +300,11 @@ document.addEventListener('DOMContentLoaded', () => {
         new ProductFilter();
     }
 
+    // Initialize lightbox if on products page
+    if (document.querySelector('.lightbox-trigger')) {
+        new LightboxGallery();
+    }
+
     // Initialize mobile menu
     new MobileMenu();
 
