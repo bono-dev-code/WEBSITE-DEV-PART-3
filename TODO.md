@@ -1,7 +1,5 @@
-# TODO: Consolidate CSS into styles.css
+# TODO: Consolidate JavaScript into one file
 
-- [x] Append all content from `css/lightbox.css` to the end of `css/style.css`
-- [x] Remove the `<link>` tag for `lightbox.css` from `index.html`
-- [x] Remove the `<link>` tag for `lightbox.css` from `Pages/products.html`
-- [x] Delete the `css/lightbox.css` file
-- [x] Test the website to ensure lightbox functionality still works
+- [x] Merge LightboxGallery class from js/lightbox.js into js/main.js
+- [x] Delete js/lightbox.js
+- [x] Test the website to ensure lightbox functionality works (open index.html in browser)
