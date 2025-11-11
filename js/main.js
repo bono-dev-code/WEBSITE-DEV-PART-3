@@ -183,6 +183,31 @@ class MobileMenu {
     }
 }
 
+// ================= REAL-TIME DATE AND TIME =================
+class DateTimeUpdater {
+    constructor() {
+        this.dateTimeElement = document.getElementById('currentDateTime');
+        if (this.dateTimeElement) {
+            this.updateDateTime();
+            setInterval(() => this.updateDateTime(), 1000);
+        }
+    }
+
+    updateDateTime() {
+        const now = new Date();
+        const options = {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric',
+            hour: '2-digit',
+            minute: '2-digit',
+            second: '2-digit',
+            timeZoneName: 'short'
+        };
+        this.dateTimeElement.textContent = now.toLocaleString('en-ZA', options);
+    }
+}
+
 // ================= INITIALIZE EVERYTHING =================
 document.addEventListener('DOMContentLoaded', () => {
     // Initialize slideshow if on homepage
@@ -197,6 +222,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Initialize mobile menu
     new MobileMenu();
+
+    // Initialize date and time updater
+    new DateTimeUpdater();
 
     // Add smooth scrolling for anchor links
     const anchorLinks = document.querySelectorAll('a[href^="#"]');
