@@ -4,15 +4,6 @@
  * This script powers the MeatMasters website, a platform for ordering and learning about high-quality meat products
  * including beef, chicken, lamb, pork, and goat. The website features an interactive product catalog, enquiry forms
  * for ordering, contact options, and a responsive design for mobile and desktop users.
- *
- * Key features implemented in this script:
- * - Interactive slideshow for showcasing hero images and products
- * - Form validation and submission for enquiries (pricing, orders) and contact messages
- * - Product filtering and search functionality on the products page
- * - Lightbox gallery for viewing detailed product images with navigation
- * - Mobile-responsive navigation menu
- * - Dynamic date/time and year updates
- * - Smooth scrolling for anchor links
  */
 
 /**
