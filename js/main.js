@@ -513,11 +513,9 @@ class ProductFilter {
         this.searchInput.addEventListener('input', () => this.filterBySearch());
         this.checkUrlHash();
         this.applyFilters();
-        // Add fade-in animation to all visible products on page load
+        // Add fade animation to all products (beef, chicken, lamb, goat, pork) on page load
         this.productItems.forEach(item => {
-            if (item.style.display !== 'none') {
-                item.classList.add('fade-in');
-            }
+            item.classList.add('fade');
         });
     }
 
@@ -560,6 +558,17 @@ class ProductFilter {
      * Applies current filters to show/hide products with animations.
      */
     applyFilters() {
+        // Add rotate animation to all products on filter change
+        this.productItems.forEach(item => {
+            item.classList.add('rotate');
+        });
+        // Remove rotate class after animation completes
+        setTimeout(() => {
+            this.productItems.forEach(item => {
+                item.classList.remove('rotate');
+            });
+        }, 500); // Match the animation duration
+
         let visibleIndex = 0;
         this.productItems.forEach(item => {
             const category = item.dataset.category;
