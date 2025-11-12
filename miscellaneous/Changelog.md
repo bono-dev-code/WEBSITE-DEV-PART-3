@@ -107,6 +107,25 @@ No recommendations!!!
 
 **World Wide Web Consortium** (2024) *CSS3 Specification*. Available at: https://www.w3.org/Style/CSS/ [Accessed 21 September 2024].
 
+### JavaScript Development Resources
+
+**Mozilla Developer Network** (2024) *JavaScript Reference*. Available at: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference .
+
+**Mozilla Developer Network** (2024) *Document Object Model (DOM)*. Available at: https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model .
+
+**Mozilla Developer Network** (2024) *EventTarget.addEventListener()*. Available at: https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener .
+
+**Mozilla Developer Network** (2024) *Window.setInterval()*. Available at: https://developer.mozilla.org/en-US/docs/Web/API/Window/setInterval..
+
+**Mozilla Developer Network** (2024) *Form Validation*. Available at: https://developer.mozilla.org/en-US/docs/Learn/Forms/Form_validation .
+
+**W3Schools** (2024) *JavaScript Tutorial*. Available at: https://www.w3schools.com/js/ [Accessed 22 September 2024].
+
+**W3Schools** (2024) *JavaScript DOM Methods*. Available at: https://www.w3schools.com/js/js_htmldom_methods.asp .
+
+**W3Schools** (2024) *JavaScript Events*. Available at: https://www.w3schools.com/js/js_events.asp .
+
+
 ---
 
 This changelog documents all major additions and new features implemented for the MeatMasters Butchery website.
