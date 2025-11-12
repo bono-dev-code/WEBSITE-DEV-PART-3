@@ -1726,11 +1726,9 @@ input:focus, textarea:focus, select:focus {
 
 @keyframes lightboxZoomIn {
     from {
-        transform: scale(0.8);
         opacity: 0;
     }
     to {
-        transform: scale(1);
         opacity: 1;
     }
 }
@@ -1882,10 +1880,8 @@ input:focus, textarea:focus, select:focus {
 @keyframes lightboxFadeIn {
     from {
         opacity: 0;
-        transform: scale(0.9);
     }
     to {
         opacity: 1;
-        transform: scale(1);
     }
 }
