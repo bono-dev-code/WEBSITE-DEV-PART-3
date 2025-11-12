@@ -155,7 +155,6 @@ Responsive design screenshots are available in the Assets folder:
 - `./Assets/3.Laptop 1024px` - Desktop layout
 
 
-
 **MeatMasters Butchery** - *Where Flavor Meets Perfection since 2017* 🥩
 
 *Premium quality meats, expertly cut and ethically sourced. From our family to yours.*
