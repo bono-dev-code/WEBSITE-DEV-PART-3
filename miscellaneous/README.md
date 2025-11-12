@@ -9,13 +9,16 @@
 
 ## 📋 Description
 
-MeatMasters Butchery is a premium static website designed for a family-run meat retailer in South Africa. The website showcases high-quality, ethically sourced meats including beef, chicken, lamb, pork, and goat. Built as a student project, it features a modern, responsive design with intuitive navigation and comprehensive product information.
+MeatMasters Butchery is an interactive website designed for a family-run meat retailer in South Africa. The website showcases high-quality, ethically sourced meats including beef, chicken, lamb, pork, and goat. Built as a student project, it features a modern, responsive design with intuitive navigation, comprehensive product information, and dynamic JavaScript-powered functionalities.
 
 **Key Highlights:**
 - Responsive design optimized for mobile, tablet, and desktop
-- Interactive product catalog with category filtering
-- Contact and enquiry forms for customer engagement
-- Integrated Google Maps for location services
+- Interactive slideshow with auto-advance and keyboard navigation
+- Dynamic product catalog with category filtering and search
+- Advanced form validation and submission for enquiries and contact
+- Lightbox gallery for detailed product image viewing
+- Mobile-responsive navigation menu with hamburger toggle
+- Real-time date/time updates and smooth scrolling
 - Professional branding with custom color schemes and typography
 
 ## ✨ Features
@@ -62,6 +65,7 @@ MeatMasters Butchery is a premium static website designed for a family-run meat 
 ### Core Technologies
 - **HTML5**: Semantic markup and accessibility features
 - **CSS3**: Custom properties, Grid, Flexbox, and animations
+- **JavaScript (ES6+)**: Interactive functionalities including slideshow, form validation, product filtering, and lightbox gallery
 
 ### External Libraries & Services
 - **Google Fonts**: Merriweather and Open Sans typography
@@ -72,7 +76,8 @@ MeatMasters Butchery is a premium static website designed for a family-run meat 
 - **CSS Variables**: Consistent color scheme and theming
 - **Media Queries**: Responsive breakpoints and mobile optimization
 - **CSS Grid & Flexbox**: Modern layout techniques
-- **Form Validation**: HTML5 form controls and accessibility
+- **Form Validation**: Advanced JavaScript validation with real-time feedback
+- **Event Handling**: Keyboard navigation, touch gestures, and smooth scrolling
 
 ## 📁 Project Structure
 
@@ -95,9 +100,12 @@ MeatMasters Website/
 │   └── [team photos]                # Staff photographs
 ├── css/
 │   └── style.css           # Main stylesheet with responsive design
+├── js/
+│   └── main.js             # JavaScript for interactive features
 ├── miscellaneous/
-│   └── Changelog.md        # Development history and updates
-└── README.md               # This file
+    ├── Changelog.md        # Development history and updates
+    └── README.md           # This file
+
 ```
 
 ## 🚀 Installation & Setup
@@ -123,18 +131,21 @@ MeatMasters Website/
 ### Navigation
 - **Desktop**: Use the top navigation menu
 - **Mobile**: Tap the hamburger icon (☰) to access menu
-- **Slideshow**: Click dots or arrows to navigate banner
-- **Products**: Navigate through all products to view the products
+- **Slideshow**: Click dots or arrows to navigate banner, or use left/right arrow keys
+- **Products**: Filter by category or search by name/description
 
 ### Forms
-- **Contact Form**: Fill all required fields and submit
-- **Enquiry Form**: Select enquiry type and provide details
-- **Validation**: Forms include basic HTML5 validation
+- **Contact Form**: Fill all required fields and submit (opens email client)
+- **Enquiry Form**: Select enquiry type, provide details, and submit for instant quote
+- **Validation**: Real-time JavaScript validation with visual feedback
 
-### Features
-- **Image Zoom**: Hover over product images for subtle zoom effect
-- **Social Links**: Click icons to visit social media pages
-- **Map Integration**: View business location on embedded map
+### Interactive Features
+- **Slideshow**: Auto-advancing every 4 seconds, pause on hover, keyboard navigation
+- **Product Filtering**: Click category buttons or use search bar for instant results
+- **Lightbox Gallery**: Click product images to view in full-screen gallery with navigation
+- **Form Validation**: Real-time field validation with error messages and border color changes
+- **Smooth Scrolling**: Anchor links scroll smoothly to sections
+- **Date/Time Updates**: Dynamic updates every second in South African format
 
 ## 📸 Screenshots
 
@@ -143,41 +154,7 @@ Responsive design screenshots are available in the Assets folder:
 - `./Assets/2.Tablet 768px` - Tablet layout
 - `./Assets/3.Laptop 1024px` - Desktop layout
 
-## 🔮 Future Enhancements
 
-### Frontend Improvements
-- **JavaScript Interactivity**: Add dynamic filtering and form validation
-- **Image Galleries**: Lightbox functionality for product photos
-- **Search Functionality**: Product search and advanced filtering
-- **Animations**: Enhanced CSS animations and transitions
-
-### E-commerce Features
-- **Shopping Cart**: Add to cart and checkout functionality
-- **Product Reviews**: Customer feedback and ratings
-- **Loyalty Program**: Points system for repeat customers
-- **Email Notifications**: Order confirmations and updates
-
-### Technical Improvements
-- **Progressive Web App**: Offline functionality and app-like experience
-- **SEO Optimization**: Meta tags, structured data, and performance
-- **Accessibility**: WCAG compliance and screen reader support
-- **Analytics**: Google Analytics integration for insights
-
-### Content Management
-- **Admin Panel**: Content management system for easy updates
-- **Blog Section**: Meat preparation tips and recipes
-- **Newsletter**: Email subscription for promotions
-
-### Code Standards
-- Use semantic HTML5 elements
-- Follow CSS naming conventions
-- Maintain responsive design principles
-- Test across multiple browsers and devices
-- Include comments for complex CSS rules
-
-
-
----
 
 **MeatMasters Butchery** - *Where Flavor Meets Perfection since 2017* 🥩
 
