@@ -450,10 +450,15 @@ class DateTimeUpdater {
     constructor() {
         this.dateTimeElements = document.querySelectorAll('.currentDateTime');
         this.yearElements = document.querySelectorAll('.currentYear');
-        if (this.dateTimeElements.length > 0 || this.yearElements.length > 0) {
+        this.operatingStatusElements = document.querySelectorAll('.operatingStatus');
+        if (this.dateTimeElements.length > 0 || this.yearElements.length > 0 || this.operatingStatusElements.length > 0) {
             this.updateDateTime();
             this.updateYear();
-            setInterval(() => this.updateDateTime(), 1000);
+            this.updateOperatingStatus();
+            setInterval(() => {
+                this.updateDateTime();
+                this.updateOperatingStatus();
+            }, 1000);
         }
     }
 
@@ -473,6 +478,39 @@ class DateTimeUpdater {
     updateYear() {
         const currentYear = new Date().getFullYear();
         this.yearElements.forEach(el => el.textContent = currentYear);
+    }
+
+    /**
+     * Updates operating status elements based on current day and time.
+     */
+    updateOperatingStatus() {
+        const now = new Date();
+        const day = now.getDay(); // 0 = Sunday, 1 = Monday, ..., 6 = Saturday
+        const hour = now.getHours();
+        const minute = now.getMinutes();
+        const currentTime = hour * 60 + minute; // Convert to minutes since midnight
+
+        let isOpen = false;
+
+        if (day >= 1 && day <= 5) { // Monday to Friday
+            const openTime = 8 * 60; // 8:00 AM
+            const closeTime = 18 * 60; // 6:00 PM
+            isOpen = currentTime >= openTime && currentTime < closeTime;
+        } else if (day === 6) { // Saturday
+            const openTime = 8 * 60; // 8:00 AM
+            const closeTime = 16 * 60; // 4:00 PM
+            isOpen = currentTime >= openTime && currentTime < closeTime;
+        } else if (day === 0) { // Sunday
+            const openTime = 9 * 60; // 9:00 AM
+            const closeTime = 14 * 60; // 2:00 PM
+            isOpen = currentTime >= openTime && currentTime < closeTime;
+        }
+
+        const statusText = isOpen ? 'Open' : 'Closed';
+        this.operatingStatusElements.forEach(el => {
+            el.textContent = statusText;
+            el.className = `operatingStatus ${isOpen ? 'open' : 'closed'}`;
+        });
     }
 }
 

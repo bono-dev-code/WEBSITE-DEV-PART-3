@@ -848,6 +848,25 @@ footer {
     margin-top: 4rem; /* Space above footer */
 }
 
+/*
+   OPERATING STATUS STYLES
+   Styles for the real-time operating status indicator in the footer.
+*/
+.operatingStatus {
+    font-weight: bold;
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+    display: block;
+}
+
+.operatingStatus.open {
+    color: #28a745; /* Green for open */
+}
+
+.operatingStatus.closed {
+    color: #dc3545; /* Red for closed */
+}
+
 footer h3 {
     color: var(--accent-color); /* Gold color for footer headings */
     margin-bottom: 1rem; /* Space below headings */
