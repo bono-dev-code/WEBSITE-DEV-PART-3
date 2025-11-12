@@ -1,4 +1,4 @@
-# 🥩 MeatMasters Butchery Website 
+# 🥩 MeatMasters Butchery Website
 
 ## 👨‍💻 Author
 
@@ -6,7 +6,7 @@
 - **Student ID**: ST10484954
 - **Course**: Web Development
 - **Institution**:RoseBank college
-- **Project**: WEDE 5020 POE Part 2
+- **Project**: WEDE 5020 POE Part 3
 
 
 # Changelog for MeatMasters Butchery Website
@@ -56,6 +56,25 @@
 - Created grid layout displaying product items with images, descriptions, and prices.
 - Consistent header and footer.
 
+## Version 2.0 - JavaScript Enhancements
+
+### Added JavaScript Functionality (`js/main.js`)
+- **Slideshow Controller**: Implemented interactive hero slideshow with auto-advance (4-second intervals), keyboard navigation (arrow keys), hover pause, and dot navigation controls.
+- **Form Handler**: Created comprehensive form validation and submission for contact and enquiry forms, including real-time validation, error messaging, and simulated processing with response modals.
+- **Product Filter**: Added dynamic product filtering by category and search functionality with smooth fade-in/fade-out animations and URL hash support for direct category linking.
+- **Lightbox Gallery**: Integrated image gallery viewer with navigation, keyboard controls (arrow keys, escape), touch swipe support for mobile, and loading indicators.
+- **Mobile Menu**: Implemented responsive hamburger menu toggle for mobile navigation.
+- **Date/Time Updater**: Added dynamic current date/time and year updates in South African format.
+- **Smooth Scrolling**: Enabled smooth scrolling for anchor links throughout the site.
+- **Form Validation Features**:
+  - Real-time field validation with visual feedback (green/red borders).
+  - South African phone number validation.
+  - Email format validation.
+  - Minimum quantity enforcement (0.5 kg).
+  - Message length requirements (minimum 10 characters).
+- **Enquiry Processing**: Simulated pricing calculations based on product type and quantity, including delivery fees and estimated totals.
+- **Contact Form Integration**: Mailto link generation for direct email client opening.
+
 ## See Website Responsive Design ScreenShots
 ./Assets/1.Mobile 320px
 ./Assets/2.Tablet 768px
@@ -94,4 +113,9 @@ This changelog documents all major additions and new features implemented for th
 
 
 **Improvements from part 2 feedback**
-No Improvements
+- Enhanced user experience with interactive JavaScript features
+- Improved form validation and user feedback
+- Added dynamic content updates and animations
+- Implemented advanced product filtering and search capabilities
+- Integrated lightbox gallery for better image viewing
+- Added keyboard and touch navigation support
