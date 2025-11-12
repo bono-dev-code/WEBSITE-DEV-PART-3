@@ -142,7 +142,7 @@ class FormHandler {
     }
 
     /**
-     * Sets up form submission event listener with validation and submission.
+     * Sets up form submission event listener with validation and submission, and real-time validation.
      */
     init() {
         this.form.addEventListener('submit', (e) => {
@@ -151,6 +151,74 @@ class FormHandler {
                 this.submitForm();
             }
         });
+        // Add real-time validation
+        this.addRealTimeValidation();
+    }
+
+    /**
+     * Adds real-time validation event listeners to form fields.
+     */
+    addRealTimeValidation() {
+        const fields = this.form.querySelectorAll('input, textarea, select');
+        fields.forEach(field => {
+            field.addEventListener('input', () => this.validateField(field));
+            field.addEventListener('blur', () => this.validateField(field));
+        });
+    }
+
+    /**
+     * Validates a single field in real-time.
+     * @param {HTMLElement} field - The field to validate.
+     */
+    validateField(field) {
+        // Clear any existing error for this field
+        this.clearFieldError(field);
+        let isValid = true;
+        const value = field.value.trim();
+
+        // Check required fields
+        if (field.hasAttribute('required') && !value) {
+            this.showError(field, 'This field is required');
+            isValid = false;
+        } else if (value) {
+            // Additional validations for non-empty fields
+            if (field.type === 'email') {
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!emailRegex.test(value)) {
+                    this.showError(field, 'Please enter a valid email address');
+                    isValid = false;
+                }
+            } else if (field.type === 'tel') {
+                const phoneRegex = /^(\+27|0)[6-8][0-9]{8}$/;
+                if (!phoneRegex.test(value)) {
+                    this.showError(field, 'Please enter a valid South African phone number (e.g., +27123456789 or 0123456789)');
+                    isValid = false;
+                }
+            } else if (field.name && field.name.includes('name') && value.length < 2) {
+                this.showError(field, 'Name must be at least 2 characters long');
+                isValid = false;
+            } else if (field.name === 'quantity') {
+                const quantity = parseFloat(value);
+                if (isNaN(quantity) || quantity < 0.5) {
+                    this.showError(field, 'Minimum quantity is 0.5 kg');
+                    isValid = false;
+                }
+            } else if (field.tagName.toLowerCase() === 'textarea' && value.length < 10) {
+                this.showError(field, 'Message must be at least 10 characters long');
+                isValid = false;
+            }
+        }
+
+        // Update field border color based on validity
+        if (isValid && value) {
+            field.style.borderColor = 'green';
+        } else if (!isValid) {
+            field.style.borderColor = 'red';
+        } else {
+            field.style.borderColor = ''; // Reset to default
+        }
+
+        return isValid;
     }
 
     /**
@@ -220,6 +288,17 @@ class FormHandler {
         errorDiv.style.marginTop = '0.5rem';
         field.parentNode.insertBefore(errorDiv, field.nextSibling);
         field.style.borderColor = 'red';
+    }
+
+    /**
+     * Clears error message for a specific field.
+     * @param {HTMLElement} field - The field to clear error for.
+     */
+    clearFieldError(field) {
+        const error = field.parentNode.querySelector('.error-message');
+        if (error) {
+            error.remove();
+        }
     }
 
     /**
