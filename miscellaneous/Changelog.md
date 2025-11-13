@@ -70,7 +70,7 @@ No recommendations!!!
 - **Product Filter**: Added dynamic product filtering by category and search functionality with smooth fade-in/fade-out animations and URL hash support for direct category linking.
 - **Lightbox Gallery**: Integrated image gallery viewer with navigation, keyboard controls (arrow keys, escape), touch swipe support for mobile, and loading indicators.
 - **Mobile Menu**: Implemented responsive hamburger menu toggle for mobile navigation.
-- **Date/Time Updater**: Added dynamic current date/time and year updates in South African format.
+- **Date/Time and Operating Status Updater**: Added dynamic current date/time and year updates in South African format, along with real-time indication of business open/closed status based on operational hours.
 - **Smooth Scrolling**: Enabled smooth scrolling for anchor links throughout the site.
 - **Form Validation Features**:
   - Real-time field validation with visual feedback (green/red borders).
