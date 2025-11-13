@@ -359,7 +359,7 @@ nav a.active {
    Creates a timed animation that automatically cycles through slides.
 */
 .slideshow-container {
-    animation: slideShow 24s infinite; /* 24-second cycle, repeats infinitely */
+    animation: slideShow 15s infinite; /* 15-second cycle, repeats infinitely */
 }
 
 @keyframes slideShow {
