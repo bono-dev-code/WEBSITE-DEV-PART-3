@@ -350,6 +350,8 @@ class FormHandler {
                 response += `We will contact you within 1 business day to confirm details and arrange your order.`;
             }
             this.showResponseModal(response);
+            this.form.reset();
+            this.clearErrors();
             submitButton.textContent = originalText;
             submitButton.disabled = false;
         }, 2000);
