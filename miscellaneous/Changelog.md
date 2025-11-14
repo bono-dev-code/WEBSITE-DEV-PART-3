@@ -65,7 +65,7 @@ No recommendations!!!
 ## Version 2.0 - JavaScript Enhancements
 
 ### Added JavaScript Functionality (`js/main.js`)
-- **Slideshow Controller**: Implemented interactive hero slideshow with auto-advance (4-second intervals), keyboard navigation (arrow keys), hover pause, and dot navigation controls.
+- **Slideshow Controller**: Implemented interactive hero slideshow with auto-advance (2.5-second intervals), keyboard navigation (arrow keys), hover pause, and dot navigation controls.
 - **Form Handler**: Created comprehensive form validation and submission for contact and enquiry forms, including real-time validation, error messaging, and simulated processing with response modals.
 - **Product Filter**: Added dynamic product filtering by category and search functionality with smooth fade-in/fade-out animations and URL hash support for direct category linking.
 - **Lightbox Gallery**: Integrated image gallery viewer with navigation, keyboard controls (arrow keys, escape), touch swipe support for mobile, and loading indicators.
