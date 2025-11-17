@@ -34,7 +34,7 @@ class SlideshowController {
     init() {
         this.startAutoAdvance();
         this.addKeyboardNavigation();
-        this.addHoverPause();
+        // this.addHoverPause(); // Commented out to allow slideshow to continue on hover
         this.addDotClickHandlers();
     }
 

@@ -378,12 +378,12 @@ nav a.active {
     100% { /* Slide 6 to 1 transition */ }
 }
 
-/* 
-   PAUSE ANIMATION ON HOVER
-   Stops the automatic slideshow when user hovers over it for better control.
+/*
+   NO PAUSE ON HOVER
+   The slideshow continues running even when the user hovers over it.
 */
 .slideshow-container:hover {
-    animation-play-state: paused; /* Pauses the animation */
+    animation-play-state: running; /* Ensures animation continues */
 }
 
 /* 
