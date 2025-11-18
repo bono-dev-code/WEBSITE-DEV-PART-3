@@ -65,21 +65,22 @@ No recommendations!!!
 ## Version 2.0 - JavaScript Enhancements
 
 ### Added JavaScript Functionality (`js/main.js`)
-- **Slideshow Controller**: Implemented interactive hero slideshow with auto-advance (2.5-second intervals), keyboard navigation (arrow keys), hover pause, and dot navigation controls.
-- **Form Handler**: Created comprehensive form validation and submission for contact and enquiry forms, including real-time validation, error messaging, and simulated processing with response modals.
-- **Product Filter**: Added dynamic product filtering by category and search functionality with smooth fade-in/fade-out animations and URL hash support for direct category linking.
-- **Lightbox Gallery**: Integrated image gallery viewer with navigation, keyboard controls (arrow keys, escape), touch swipe support for mobile, and loading indicators.
-- **Mobile Menu**: Implemented responsive hamburger menu toggle for mobile navigation.
-- **Date/Time and Operating Status Updater**: Added dynamic current date/time and year updates in South African format, along with real-time indication of business open/closed status based on operational hours.
-- **Smooth Scrolling**: Enabled smooth scrolling for anchor links throughout the site.
+- **Slideshow Controller**: Implemented on the homepage (index.html) for the hero section, providing an interactive slideshow with auto-advance (2.5-second intervals), keyboard navigation (arrow keys), hover pause, and dot navigation controls.
+- **Form Handler**: Created comprehensive form validation and submission for contact and enquiry forms, including real-time validation, error messaging, and simulated processing with response modals. Applied to the contact form on contact.html and the enquiry form on enquiry.html.
+- **Product Filter**: Added dynamic product filtering by category and search functionality with smooth fade-in/fade-out animations and URL hash support for direct category linking. Implemented on the products page (products.html) for the product grid section.
+- **Lightbox Gallery**: Integrated image gallery viewer with navigation, keyboard controls (arrow keys, escape), touch swipe support for mobile, and loading indicators. Used on the products page (products.html) for viewing product images in detail.
+- **Mobile Menu**: Implemented responsive hamburger menu toggle for mobile navigation. Applied across all pages (index.html, products.html, enquiry.html, contact.html, about.html) in the header navigation.
+- **Date/Time and Operating Status Updater**: Added dynamic current date/time and year updates in South African format, along with real-time indication of business open/closed status based on operational hours. Implemented in the footer across all pages (index.html, products.html, enquiry.html, contact.html, about.html).
+- **Smooth Scrolling**: Enabled smooth scrolling for anchor links throughout the site. Applied to navigation links and internal links on all pages (index.html, products.html, enquiry.html, contact.html, about.html).
 - **Form Validation Features**:
   - Real-time field validation with visual feedback (green/red borders).
   - South African phone number validation.
   - Email format validation.
   - Minimum quantity enforcement (0.5 kg).
   - Message length requirements (minimum 10 characters).
-- **Enquiry Processing**: Simulated pricing calculations based on product type and quantity, including delivery fees and estimated totals.
-- **Contact Form Integration**: Mailto link generation for direct email client opening.
+  These features are applied to the contact form on contact.html and the enquiry form on enquiry.html.
+- **Enquiry Processing**: Simulated pricing calculations based on product type and quantity, including delivery fees and estimated totals. Implemented specifically on the enquiry page (enquiry.html) for the enquiry form submission.
+- **Contact Form Integration**: Mailto link generation for direct email client opening. Applied to the contact form on contact.html.
 
 
 ## 📄 References
